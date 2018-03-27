@@ -1,8 +1,9 @@
 package YingYingMonster.LetsDo_Phase_II.daoImpl;
 
+import java.io.FileNotFoundException;
 import java.util.List;
-
 import YingYingMonster.LetsDo_Phase_II.dao.Persistant;
+import YingYingMonster.LetsDo_Phase_II.exception.DepublicateKeyException;
 
 public class MockTable {
 
@@ -16,8 +17,14 @@ public class MockTable {
 
 	public boolean insert(Persistant obj) {
 		// TODO Auto-generated method stub
-		if(findOne(obj))
+		try {
+			if(findOne(obj))
+				return false;
+//				throw new DepublicateKeyException();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 			return false;
+		}
 		handler.appendCSV(obj.toStrArr(), path);
 		return true;
 		
@@ -38,7 +45,7 @@ public class MockTable {
 		return false;
 	}
 	
-	public boolean findOne(Persistant obj){
+	public boolean findOne(Persistant obj) throws FileNotFoundException{
 		List<String[]>list=handler.readCSV(path);
 		String key=obj.getKey();
 		for(String[]arr:list){
