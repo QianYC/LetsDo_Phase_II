@@ -16,15 +16,9 @@ public class MockTable {
 	}
 
 	public boolean insert(Persistant obj) {
-		// TODO Auto-generated method stub
-		try {
-			if(findOne(obj))
-				return false;
-//				throw new DepublicateKeyException();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		if(findOne(obj))
 			return false;
-		}
+//				throw new DepublicateKeyException();
 		handler.appendCSV(obj.toStrArr(), path);
 		return true;
 		
@@ -91,12 +85,21 @@ public class MockTable {
 		return true;
 	}
 	
-	public boolean findOne(Persistant obj) throws FileNotFoundException{
-		List<String[]>list=handler.readCSV(path);
+	public boolean findOne(Persistant obj){
+		List<String[]> list=null;
+		try {
+			list = handler.readCSV(path);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		String key=obj.getKey();
-		for(String[]arr:list){
-			if(arr[0].equals(key))
-				return true;
+		if(list!=null){			
+			for(String[]arr:list){
+				if(arr[0].equals(key))
+					return true;
+			}
 		}
 		return false;
 	}
