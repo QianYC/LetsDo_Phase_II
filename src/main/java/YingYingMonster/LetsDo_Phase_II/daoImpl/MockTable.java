@@ -16,8 +16,9 @@ public class MockTable {
 
 	public boolean insert(Persistant obj) {
 		// TODO Auto-generated method stub
-		
-		handler.appendCSV(((Persistant) obj).toStrArr(), path);
+		if(findOne(obj))
+			return false;
+		handler.appendCSV(obj.toStrArr(), path);
 		return true;
 		
 	}
@@ -34,6 +35,16 @@ public class MockTable {
 
 	public boolean delete(Persistant obj) {
 		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public boolean findOne(Persistant obj){
+		List<String[]>list=handler.readCSV(path);
+		String key=obj.getKey();
+		for(String[]arr:list){
+			if(arr[0].equals(key))
+				return true;
+		}
 		return false;
 	}
 }
