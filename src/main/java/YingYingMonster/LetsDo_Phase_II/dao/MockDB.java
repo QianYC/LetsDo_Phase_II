@@ -3,6 +3,8 @@ package YingYingMonster.LetsDo_Phase_II.dao;
 import java.io.IOException;
 import java.util.List;
 
+import YingYingMonster.LetsDo_Phase_II.model.Persistant;
+
 public interface MockDB {
 
 	public boolean createTable(String name,String[] arrtibutes)throws IOException;

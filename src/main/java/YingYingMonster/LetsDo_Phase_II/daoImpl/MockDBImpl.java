@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import YingYingMonster.LetsDo_Phase_II.dao.MockDB;
-import YingYingMonster.LetsDo_Phase_II.dao.Persistant;
+import YingYingMonster.LetsDo_Phase_II.model.Persistant;
 
 @Component
 public class MockDBImpl implements MockDB {
