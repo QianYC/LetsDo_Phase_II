@@ -2,8 +2,8 @@ package YingYingMonster.LetsDo_Phase_II.daoImpl;
 
 import java.io.FileNotFoundException;
 import java.util.List;
-import YingYingMonster.LetsDo_Phase_II.dao.Persistant;
-import YingYingMonster.LetsDo_Phase_II.exception.DepublicateKeyException;
+
+import YingYingMonster.LetsDo_Phase_II.model.Persistant;
 
 public class MockTable {
 
