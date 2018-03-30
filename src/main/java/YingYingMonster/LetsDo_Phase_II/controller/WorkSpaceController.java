@@ -15,6 +15,20 @@ public class WorkSpaceController {
 	 */
 	@GetMapping("/{workType}")
 	public String getWorkSpace1(@PathVariable("workType")String type) {
-		if(type.equals(""))
+		if(type.equals("total")) {
+			//整体
+			return "workspace/total";
+		}
+		else if(type.equals("area")) {
+			//分区
+			return "workspace/area";
+		}
+//		else if(type.equals("tips")) {
+//			//标记
+//		}
+		else {
+			//default
+			return "workspace/total";
+		}
 	}
 }
