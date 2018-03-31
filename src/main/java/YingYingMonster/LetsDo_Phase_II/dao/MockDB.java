@@ -7,7 +7,7 @@ import YingYingMonster.LetsDo_Phase_II.model.Persistant;
 
 public interface MockDB {
 
-	public boolean createTable(String name,String[] arrtibutes)throws IOException;
+	public boolean createTable(String name,String[] attributes)throws IOException;
 	
 	public boolean insert(String tableName,Persistant obj);
 	
