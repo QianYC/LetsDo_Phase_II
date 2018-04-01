@@ -15,6 +15,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script th:src="@{/model/js/jquery-2.1.1.min.js}"></script> 
 <!--icons-css-->
 <link th:href="@{/model/css/font-awesome.css}" rel="stylesheet"> 
+
+ <!-- 自己的css文件 -->
+    <link rel="stylesheet" th:href="@{/css/workspace/tools.css}">
+    <link rel="stylesheet" th:href="@{/css/workspace/area.css}">
+ <!-- 自己的css文件结束 -->
+ 
+ <!-- 自己的js文件 -->
+ <script type="text/javascript" th:src="@{/js/workspace/canvas.js}"></script>
+ <!-- 自己的js文件结束 -->
+ 
+ <!-- 网页初始化 -->
+ <script>
+ window.onload = function(){
+		var mark = new Mark();
+		mark.init();//初始化画笔
+		};
+ </script>
+ <!-- 网页初始化结束 -->
+
 <!--Google Fonts-->
 <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
@@ -302,6 +321,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--inner block start here-->
 <div class="inner-block">
 <!--我们的操作区开始  -->
+ <div id = "tools" > 
+<!-- 工具栏开始 -->
+			  <img alt="铅笔" id="pencil" src="/pic/tools/pencil.png" class="tools"><br>
+              <img alt="直线" id="line" src="/pic/tools/line.png" class="tools"><br>
+              <br>
+              <img alt="矩形" id="square" src="/pic/tools/square.png" class="tools"><br>
+              <br>
+              <img alt="圆形" id="circle" src="/pic/tools/circle.png" class="tools"><br>
+              <br>
+              <img alt="橡皮擦" id="rubber" src="/pic/tools/rubber.png" class="tools"><br>
+              笔记颜色：<br>
+              <input type="color" id="pencilColor" onChange="changePencilColor()" />
+              <br>
+              笔迹大小：<br>
+              <input type="range" id="pencilSize" min="0.5" max="10" onclick="changePencilSize()" size="60" />
+              <br>
+              <br>
+              橡皮擦大小：<br>
+              <input type="range" id="rubberSize" min="0.5" max="100" onclick="changeRubberSize()"  size="60" hidden="hidden" />
+              <br>
+              <br>
+			 清空：<br><img alt="清空" id = "clearAll" src="/pic/tools/clear.png" onClick="clearAllMark()" class="tools"><br><br>
+ </div>
+<!-- 工具栏结束 -->
+<!-- canvas开始 -->
+	<div id="drawingPenal">
+<canvas id="penal" height = "530" width="800" ></canvas>
+		</div>
+<!-- canvas结束 -->
 <!--我们的操作区结束 -->
 </div>
 <!--inner block end here-->

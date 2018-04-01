@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+
+.tools {
+    width:30px;
+    height:30px;
+}
+
+#tools {
+		position:relative;
+	 	left: 10px;
+	 	top: 5px;
+	 	border-style:inset;
+		border-color: rgba(113,114,122,0.80);
+	   	border-width: medium;
+	 	width: 105px;
+	    height: 500px;
+	   background-color: rgba(59,210,234,0.43);
+}
+
+#drawingPenal {
+	 	position:relative;
+	 	left: 150px;
+	 	top: -520px;
+        width: 800px;
+        height: 530px;
+	 	background-color: #FFFFFF;
+	 	background-size: contain;
+	  	background-repeat: no-repeat;
+	 	border-style:outset;
+		border-color: rgba(113,114,122,0.80);
+	   	border-width: medium;
+    }
+
