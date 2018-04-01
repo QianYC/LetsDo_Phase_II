@@ -112,7 +112,7 @@ public class Project implements Persistant {
 	@Override
 	public String getKey() {
 		// TODO Auto-generated method stub
-		return null;
+		return projectId;
 	}
 
 }
