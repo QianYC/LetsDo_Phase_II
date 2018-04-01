@@ -14,10 +14,9 @@ public interface ProjectDAO {
 	/**
 	 * 添加project
 	 * @param project
-	 * @param dataSet
 	 * @return
 	 */
-	public boolean addProject(Project project, byte[] dataSet);
+	public boolean addProject(Project project);
 	
 	/**
 	 * 验证projectId是否合法

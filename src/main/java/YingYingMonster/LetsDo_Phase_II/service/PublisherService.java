@@ -17,5 +17,7 @@ public interface PublisherService {
 	public List<String> viewPushEvents(String publisherId,String projectId);//查看某个项目的提交记录
 
 	public byte[] downloadTags(String publisherId,String projectId);//下载所有标注
+	
+	public boolean recharge(int money);//充值
 
 }

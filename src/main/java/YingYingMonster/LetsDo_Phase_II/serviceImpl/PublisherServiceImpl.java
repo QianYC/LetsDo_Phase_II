@@ -40,4 +40,10 @@ public class PublisherServiceImpl implements PublisherService {
 		return null;
 	}
 
+	@Override
+	public boolean recharge(int money) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
