@@ -10,8 +10,6 @@ public class Project implements Persistant {
 	
 	private String tagRequirement,workerRequirement;
 	
-	private double proceeding;
-	
 	private int money;//任务赏金
 	
 
@@ -85,14 +83,6 @@ public class Project implements Persistant {
 
 	public void setWorkerRequirement(String workerRequirement) {
 		this.workerRequirement = workerRequirement;
-	}
-
-	public double getProceeding() {
-		return proceeding;
-	}
-
-	public void setProceeding(double proceeding) {
-		this.proceeding = proceeding;
 	}
 
 	public int getMoney() {
