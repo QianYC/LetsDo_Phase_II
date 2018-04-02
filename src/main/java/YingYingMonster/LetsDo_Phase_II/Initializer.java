@@ -26,13 +26,6 @@ public class Initializer {
 			database.mkdirs();
 		}
 		
-		String projectDir=root+"/projects";
-		File projects=new File(projectDir);
-		if(!projects.exists()){
-			System.out.println("making dir for projects : "+projectDir);
-			projects.mkdirs();
-		}
-		
 		String tableDir=root+"/tables";
 		File tables=new File(tableDir);
 		if(!tables.exists()){
@@ -40,11 +33,11 @@ public class Initializer {
 			tables.mkdirs();
 		}
 		
-		String userDir=root+"/users";
-		File users=new File(userDir);
-		if(!users.exists()){
-			System.out.println("making dir for users : "+userDir);
-			users.mkdirs();
+		String dataSetDir=root+"/dataSet";
+		File dataSet=new File(dataSetDir);
+		if(!dataSet.exists()){
+			System.out.println("making dir for dataSet : "+dataSetDir);
+			dataSet.mkdirs();
 		}
 		
 		String batchDir=root+"/createTable.yym";
