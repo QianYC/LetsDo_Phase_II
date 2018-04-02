@@ -1,5 +1,7 @@
 package YingYingMonster.LetsDo_Phase_II.dao;
 
+import java.util.List;
+
 public interface DataDAO {
 
 	/**
@@ -27,4 +29,33 @@ public interface DataDAO {
 	 * @return
 	 */
 	public double viewProjectProgress(String publisherId,String projectId);
+	
+	/**
+	 * 查看某个项目的提交记录
+	 * @param publisherId
+	 * @param projectId
+	 * @return
+	 */
+	public List<String[]>viewPushEvents(String publisherId,String projectId);
+	
+	/**
+	 * 查看某个项目的参与者
+	 * @param publisherId
+	 * @param projectId
+	 * @return
+	 */
+	public List<String> viewWorkers(String publisherId,String projectId);
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<String[]> readProjectsDate();
+	
+	/**
+	 * 
+	 * @param Projects
+	 * @return
+	 */
+	public boolean modifyDateStatus(List<String[]> Projects);
 }

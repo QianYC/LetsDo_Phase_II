@@ -4,11 +4,6 @@ import java.util.List;
 
 import YingYingMonster.LetsDo_Phase_II.model.Project;
 
-/**
- * 负责和Project对象有关的事务
- * @author 17678
- *
- */
 public interface ProjectDAO {
 
 	/**
@@ -39,27 +34,25 @@ public interface ProjectDAO {
 	 */
 	public List<Project>viewAllProjects();
 	
-	/**
-	 * 供工人查看自己的项目
-	 * @param workerId
-	 * @return
-	 */
-	public List<Project>workerViewProjects(String workerId);
+//	/**
+//	 * 供工人查看自己的项目
+//	 * @param workerId
+//	 * @return
+//	 */
+//	public List<Project>workerViewProjects(String workerId);
 	
 	/**
-	 * 供工人fork项目
-	 * @param workerId
+	 * 修改当前工人数
+	 * @param projectId
+	 * @return
+	 */
+	public boolean modifyCurrentWorkerNum(String publisherId,String projectId);
+	
+	/**
+	 * 删除未开始的项目
 	 * @param publisherId
 	 * @param projectId
 	 * @return
 	 */
-	public boolean forkProject(String workerId,String publisherId,String projectId);
-	
-	/**
-	 * 查看某个项目的提交记录
-	 * @param publisherId
-	 * @param projectId
-	 * @return
-	 */
-	public List<String>viewPushEvents(String publisherId,String projectId);
+	public boolean deleteProject(String publisherId,String projectId);
 }
