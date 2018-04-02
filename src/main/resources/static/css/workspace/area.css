@@ -4,24 +4,31 @@
 .tools {
     width:30px;
     height:30px;
+	transition-duration: 0.2s;
+	-webkit-transition-duration: 0.2s;
+	background-color:#9AEF9C;
+}
+
+.toolsHover{
+	backgroud-color
+}
+
+.tools:hover{
+	background-color:#12E015
 }
 
 #tools {
 		position:relative;
-	 	left: 10px;
-	 	top: 5px;
-	 	border-style:inset;
-		border-color: rgba(113,114,122,0.80);
-	   	border-width: medium;
+	 	left: 1100px;
+	 	top: 0px;
 	 	width: 105px;
 	    height: 500px;
-	   background-color: rgba(59,210,234,0.43);
 }
 
 #drawingPenal {
 	 	position:relative;
-	 	left: 150px;
-	 	top: -520px;
+	 	left: 200px;
+	 	top: -500px;
         width: 800px;
         height: 530px;
 	 	background-color: #FFFFFF;
@@ -31,4 +38,10 @@
 		border-color: rgba(113,114,122,0.80);
 	   	border-width: medium;
     }
+    
+#requirementArea{
+	position:relative;
+	 	left: 0px;
+	 	top: -1000px;
+}
 
