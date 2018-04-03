@@ -4,9 +4,11 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -55,14 +57,14 @@ public class DataDAOImpl implements DataDAO{
 	public boolean uploadDataSet(String publisherId, String dataSetId, byte[] dataSet) throws IOException {
 		// TODO 自动生成的方法存根
 		List<YingYingMonster.LetsDo_Phase_II.model.Project> projects=projectDAOImpl.publisherViewProjects(publisherId);
-        int pacNum=0;
+        int pacSize=0,picNum=0;;
         for(YingYingMonster.LetsDo_Phase_II.model.Project p:projects){
         	if(p.getProjectId().equals(dataSetId)){
-        		pacNum=p.getPackageNum();
+        		pacSize=p.getPackageNum();
         		break;
         	}
         }
-        if(pacNum==0)
+        if(pacSize==0)
         	return false;
         
 		BufferedOutputStream bos=null;
@@ -104,6 +106,7 @@ public class DataDAOImpl implements DataDAO{
             //排除空文件夹  
             if(!zipEntry.getName().endsWith(File.separator)){  
                 System.out.println("正在解压文件:"+zipEntry.getName());//打印输出信息  
+            	picNum++;
                 OutputStream os = new FileOutputStream(new File(outPath+zipEntry.getName()));//创建解压后的文件  
                 BufferedOutputStream bos1 = new BufferedOutputStream(os);//带缓的写出流  
                 InputStream is = zipFile.getInputStream(zipEntry);//读取元素  
@@ -129,9 +132,30 @@ public class DataDAOImpl implements DataDAO{
         zipFile.close();  
         
         //分包
-        for(int i=0;i<pacNum;i++){
+        if(picNum==0)
+        	return false;
+        
+        int index=0;
+        File[] files=new File(outPath).listFiles(new FilenameFilter(){
+			@Override
+			public boolean accept(File arg0, String arg1) {
+				// TODO 自动生成的方法存根
+				return arg1.endsWith(".jpg")||arg1.endsWith(".png")||arg1.endsWith(".txt")||arg1.endsWith(".JPG")||arg1.endsWith(".PNG");
+			}	
+        });
+        
+        for(int i=1;i<=picNum/pacSize+1;i++){
         	File pac=new File(ROOT+"/dataSet/"+publisherId+"_"+dataSetId+"/pac"+i);
+        	pac.mkdirs();
+        	for(int j=0;j<pacSize;j++){
+        		File f=new File(pac.getPath()+"/"+files[index].getName());
+        		files[index].renameTo(f);
+        		index++;
+        		if(index==files.length)
+        			break;
+        	}
         }
+        
 		return true;
 	}
 
@@ -139,7 +163,7 @@ public class DataDAOImpl implements DataDAO{
 	public byte[] downloadTags(String publisherId, String dataSetId) {
 		// TODO 自动生成的方法存根
 		File tagsSrc=new File(ROOT+"/publishers/"+publisherId+"/"+dataSetId+"/tags");
-		File tagsDes=new File(tagsSrc.getPath()+"/tags.zip");
+		File tagsDes=new File(ROOT+"/publishers/"+publisherId+"/"+dataSetId+"/tags.zip");
 		if(!tagsSrc.exists())
 			return null;
 		Project prj = new Project();

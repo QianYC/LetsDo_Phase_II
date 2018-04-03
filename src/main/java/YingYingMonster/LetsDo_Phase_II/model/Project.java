@@ -4,7 +4,7 @@ public class Project implements Persistant {
 
 	private String publisherId,projectId;//发布者id，项目id
 	
-	private int maxWorkerNum,currWorkerNum,packageNum;//允许最大参加人数，当前人数,分包数
+	private int maxWorkerNum,currWorkerNum,packageSize,picNum;//允许最大参加人数，当前人数，分包数，图片数
 	
 	private String startDate,endDate;//yyyy-MM-dd
 	
@@ -46,11 +46,11 @@ public class Project implements Persistant {
 	}
 
 	public int getPackageNum() {
-		return packageNum;
+		return packageSize;
 	}
 
 	public void setPackageNum(int packageNum) {
-		this.packageNum = packageNum;
+		this.packageSize = packageNum;
 	}
 
 	public String getStartDate() {
@@ -91,6 +91,14 @@ public class Project implements Persistant {
 
 	public void setMoney(int money) {
 		this.money = money;
+	}
+	
+	public void setPicNum(int picNum){
+		this.picNum=picNum;
+	}
+	
+	public int getPicNum(){
+		return picNum;
 	}
 
 	@Override
