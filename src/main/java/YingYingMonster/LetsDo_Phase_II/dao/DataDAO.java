@@ -12,10 +12,10 @@ public interface DataDAO {
 	 * @param publiserId
 	 * @param dataSetId
 	 * @param dataSet
-	 * @return
+	 * @return 解压后的图片数量
 	 * @throws IOException 
 	 */
-	public boolean uploadDataSet(String publisherId,String dataSetId,byte[]dataSet) throws IOException;
+	public int uploadDataSet(String publisherId,String dataSetId,int packSize,byte[]dataSet) throws IOException;
 	
 	/**
 	 * 上传者下载工人的作业

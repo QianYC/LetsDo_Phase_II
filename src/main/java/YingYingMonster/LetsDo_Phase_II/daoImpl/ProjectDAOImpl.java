@@ -51,10 +51,4 @@ public class ProjectDAOImpl implements ProjectDAO {
 		return false;
 	}
 
-	@Override
-	public boolean modifyPicNum(String publisherId, String projectId, int picNum) {
-		// TODO 自动生成的方法存根
-		return false;
-	}
-
 }

@@ -56,12 +56,4 @@ public interface ProjectDAO {
 	 */
 	public boolean deleteProject(String publisherId,String projectId);
 	
-	/**
-	 * 
-	 * @param publisherId
-	 * @param projectId
-	 * @param picNum
-	 * @return
-	 */
-	public boolean modifyPicNum(String publisherId,String projectId,int picNum);
 }

@@ -17,7 +17,6 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.CRC32;
 import java.util.zip.CheckedInputStream;
-
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Zip;
 import org.apache.tools.ant.types.FileSet;
@@ -56,7 +55,7 @@ public class DataDAOImpl implements DataDAO{
 //    }
 
 	@Override
-	public boolean uploadDataSet(String publisherId, String dataSetId, byte[] dataSet) throws IOException {
+	public int uploadDataSet(String publisherId, String dataSetId, int packSize,byte[] dataSet) throws IOException {
 		// TODO 自动生成的方法存根
 		List<YingYingMonster.LetsDo_Phase_II.model.Project> projects=projectDAOImpl.publisherViewProjects(publisherId);
         int pacSize=0,picNum=0;
