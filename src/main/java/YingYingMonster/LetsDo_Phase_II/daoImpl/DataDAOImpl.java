@@ -24,10 +24,12 @@ import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import YingYingMonster.LetsDo_Phase_II.dao.DataDAO;
 import YingYingMonster.LetsDo_Phase_II.dao.ProjectDAO;
 
+@Component
 public class DataDAOImpl implements DataDAO{
 	
 	@Autowired
@@ -40,24 +42,24 @@ public class DataDAOImpl implements DataDAO{
 	/*
 	 * 复制文件
 	 */
-	private void copyFile(File fromFile,File toFile) throws IOException{
-        FileInputStream ins = new FileInputStream(fromFile);
-        FileOutputStream out = new FileOutputStream(toFile);
-        byte[] b = new byte[1024];
-        int n=0;
-        while((n=ins.read(b))!=-1){
-            out.write(b, 0, n);
-        }
-        
-        ins.close();
-        out.close();
-    }
+//	private void copyFile(File fromFile,File toFile) throws IOException{
+//        FileInputStream ins = new FileInputStream(fromFile);
+//        FileOutputStream out = new FileOutputStream(toFile);
+//        byte[] b = new byte[1024];
+//        int n=0;
+//        while((n=ins.read(b))!=-1){
+//            out.write(b, 0, n);
+//        }
+//        
+//        ins.close();
+//        out.close();
+//    }
 
 	@Override
 	public boolean uploadDataSet(String publisherId, String dataSetId, byte[] dataSet) throws IOException {
 		// TODO 自动生成的方法存根
 		List<YingYingMonster.LetsDo_Phase_II.model.Project> projects=projectDAOImpl.publisherViewProjects(publisherId);
-        int pacSize=0,picNum=0;;
+        int pacSize=0,picNum=0;
         for(YingYingMonster.LetsDo_Phase_II.model.Project p:projects){
         	if(p.getProjectId().equals(dataSetId)){
         		pacSize=p.getPackageNum();
@@ -134,6 +136,7 @@ public class DataDAOImpl implements DataDAO{
         //分包
         if(picNum==0)
         	return false;
+        projectDAOImpl.modifyPicNum(publisherId, dataSetId,picNum);
         
         int index=0;
         File[] files=new File(outPath).listFiles(new FilenameFilter(){
@@ -144,10 +147,10 @@ public class DataDAOImpl implements DataDAO{
 			}	
         });
         
-        for(int i=1;i<=picNum/pacSize+1;i++){
+        for(int i=1;i<=Math.ceil(picNum/1.0);i++){
         	File pac=new File(ROOT+"/dataSet/"+publisherId+"_"+dataSetId+"/pac"+i);
         	pac.mkdirs();
-        	for(int j=0;j<pacSize;j++){
+        	for(int j=0;j<1;j++){
         		File f=new File(pac.getPath()+"/"+files[index].getName());
         		files[index].renameTo(f);
         		index++;
@@ -156,6 +159,20 @@ public class DataDAOImpl implements DataDAO{
         	}
         }
         
+        //建立publisher相关文件夹
+        File publisherPushEvents=new File(ROOT+"/publishers/"+publisherId+"/"+dataSetId+"/pushEvents.csv");
+        if(!publisherPushEvents.exists()){
+        	publisherPushEvents.getParentFile().mkdirs();
+        	publisherPushEvents.createNewFile();
+        }
+        File publisherTags=new File(ROOT+"/publishers/"+publisherId+"/"+dataSetId+"/tags");
+        if(!publisherTags.exists())
+        	publisherTags.mkdirs();
+        File publisherFork=new File(ROOT+"/publishers/"+publisherId+"/"+dataSetId+"/fork.csv");
+        if(!publisherFork.exists()){
+        	publisherFork.getParentFile().mkdirs();
+        	publisherFork.createNewFile();
+        }
 		return true;
 	}
 
@@ -212,7 +229,7 @@ public class DataDAOImpl implements DataDAO{
             catch(Exception e){   
                 e.printStackTrace();    
             }  
-        }  
+        }
 	}
 
 	@Override
@@ -231,7 +248,17 @@ public class DataDAOImpl implements DataDAO{
 				nameList.add(s);
 		}
 		//计算progress
-		return 0;
+		List<YingYingMonster.LetsDo_Phase_II.model.Project> projects=projectDAOImpl.publisherViewProjects(publisherId);
+        int picNum=0;
+        for(YingYingMonster.LetsDo_Phase_II.model.Project p:projects){
+        	if(p.getProjectId().equals(projectId)){
+        		picNum=p.getPackageNum();
+        		break;
+        	}
+        }
+        if(picNum==0)
+        	return 0;
+		return nameList.size()/picNum*1.0;
 	}
 
 	@Override

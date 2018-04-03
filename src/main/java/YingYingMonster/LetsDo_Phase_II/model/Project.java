@@ -1,6 +1,6 @@
 package YingYingMonster.LetsDo_Phase_II.model;
 
-public class Project implements Persistant {
+public class Project{
 
 	private String publisherId,projectId;//发布者id，项目id
 	
@@ -100,17 +100,4 @@ public class Project implements Persistant {
 	public int getPicNum(){
 		return picNum;
 	}
-
-	@Override
-	public String[] toStrArr() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getKey() {
-		// TODO Auto-generated method stub
-		return projectId;
-	}
-
 }

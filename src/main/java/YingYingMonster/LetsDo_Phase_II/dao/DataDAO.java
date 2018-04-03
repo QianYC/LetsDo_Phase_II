@@ -3,6 +3,8 @@ package YingYingMonster.LetsDo_Phase_II.dao;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 public interface DataDAO {
 
 	/**
