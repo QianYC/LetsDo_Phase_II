@@ -1,12 +1,14 @@
 package YingYingMonster.LetsDo_Phase_II.daoImpl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import YingYingMonster.LetsDo_Phase_II.dao.MockDB;
+import YingYingMonster.LetsDo_Phase_II.model.Persistent;
 
 @Component
 public class MockDBImpl implements MockDB {
@@ -52,7 +54,7 @@ public class MockDBImpl implements MockDB {
 	}
 
 	@Override
-	public boolean insert(String tableName, Object obj) {
+	public boolean insert(String tableName, Persistent obj) throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		if(tables.get(tableName)==null)
 			return false;
@@ -61,7 +63,7 @@ public class MockDBImpl implements MockDB {
 	}
 
 	@Override
-	public List<Object> readTable(String tableName) {
+	public List<Persistent> readTable(String tableName) throws FileNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		if(tables.get(tableName)==null)
 			return null;
@@ -69,7 +71,7 @@ public class MockDBImpl implements MockDB {
 	}
 
 	@Override
-	public boolean modify(String tableName,Object obj) {
+	public boolean modify(String tableName,Persistent obj) throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		if(tables.get(tableName)==null)
 			return false;
@@ -77,7 +79,7 @@ public class MockDBImpl implements MockDB {
 	}
 
 	@Override
-	public boolean delete(String tableName,Object obj) {
+	public boolean delete(String tableName,Persistent obj) {
 		// TODO Auto-generated method stub
 		if(tables.get(tableName)==null)
 			return false;

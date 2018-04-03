@@ -1,6 +1,6 @@
 package YingYingMonster.LetsDo_Phase_II.model;
 
-public class Project{
+public class Project implements Persistent{
 
 	private String publisherId,projectId;//发布者id，项目id
 	
@@ -91,6 +91,12 @@ public class Project{
 
 	public void setMoney(int money) {
 		this.money = money;
+	}
+
+	@Override
+	public String getKey() {
+		// TODO Auto-generated method stub
+		return publisherId+"_"+projectId;
 	}
 	
 }
