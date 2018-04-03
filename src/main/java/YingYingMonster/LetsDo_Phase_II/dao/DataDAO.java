@@ -1,6 +1,9 @@
 package YingYingMonster.LetsDo_Phase_II.dao;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.stereotype.Component;
 
 public interface DataDAO {
 
@@ -10,8 +13,9 @@ public interface DataDAO {
 	 * @param dataSetId
 	 * @param dataSet
 	 * @return
+	 * @throws IOException 
 	 */
-	public boolean uploadDataSet(String publiserId,String dataSetId,byte[]dataSet);
+	public boolean uploadDataSet(String publisherId,String dataSetId,byte[]dataSet) throws IOException;
 	
 	/**
 	 * 上传者下载工人的作业
