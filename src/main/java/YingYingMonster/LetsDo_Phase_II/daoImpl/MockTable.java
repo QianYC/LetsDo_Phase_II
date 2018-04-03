@@ -1,106 +1,80 @@
 package YingYingMonster.LetsDo_Phase_II.daoImpl;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
-import YingYingMonster.LetsDo_Phase_II.model.Persistant;
+import YingYingMonster.LetsDo_Phase_II.model.Persistent;
 
 public class MockTable {
 
 	public String path;
 	
-	private CSVHandler handler=new CSVHandler();
-	
 	public MockTable(String path){
 		this.path=path;		
 	}
 
-	public boolean insert(Persistant obj) {
-		if(findOne(obj))
+	public boolean insert(Persistent obj) throws FileNotFoundException, IOException {
+		File file=new File(path+File.pathSeparator+obj.getKey()+".obj");
+		if(file.exists())
 			return false;
-//				throw new DepublicateKeyException();
-		handler.appendCSV(obj.toStrArr(), path);
+		
+		ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(file));
+		oos.writeObject(obj);
+		oos.flush();
+		oos.close();
+		
 		return true;
 		
 	}
 
-	public List<String[]> readAll() {
+	public List<Persistent> readAll() throws FileNotFoundException, IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
-		List<String[]> list = null;
-		try {
-			list = handler.readCSV(path);
-		} catch (FileNotFoundException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+		List<Persistent> list = new ArrayList<>();
+		String[]arr=new File(path).list();
+		
+		if(arr!=null){			
+			for(String str:arr){
+				ObjectInputStream ois=new ObjectInputStream(
+						new FileInputStream(
+								new File(path+File.pathSeparator+str)));
+				Persistent obj=(Persistent) ois.readObject();
+				list.add(obj);
+				ois.close();
+			}
 		}
 		return list;
 	}
 
-	public boolean modify(Persistant obj) {
+	public boolean modify(Persistent obj) throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		try {
-			List<String[]> list=handler.readCSV(path);
-			List<String[]> newList=null;
-			for(String[] str:list){
-				if(str[0].equals(obj.getKey()))
-					newList.add(obj.toStrArr());
-				else{
-					newList.add(str);
-				}
-			}
-			if(!newList.isEmpty())
-				handler.writeCSV(newList, path);
-			else
-				return false;
-		} catch (FileNotFoundException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
+		File file=new File(path+File.pathSeparator+obj.getKey()+".obj");
+		if(!file.exists())
+			return false;
+		
+		ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(file));
+		oos.writeObject(obj);
+		oos.flush();
+		oos.close();
+		
 		return true;
 	}
 
-	public boolean delete(Persistant obj) {
+	public boolean delete(Persistent obj) {
 		// TODO Auto-generated method stub
-		if(!findOne(obj))
+		File file=new File(path+File.pathSeparator+obj.getKey()+".obj");
+		if(!file.exists())
 			return false;
 		else{
-			try {
-				List<String[]> list=handler.readCSV(path);
-				int i=-1;
-				for(String[] str:list){
-					if(str[0].equals(obj.getKey())){
-						i=list.indexOf(str);
-						break;
-					}
-				}
-				if(i==-1)
-					return false;
-				else
-					list.remove(i);
-			} catch (FileNotFoundException e) {
-				// TODO 自动生成的 catch 块
-				e.printStackTrace();
-			}
+			file.delete();
+			return true;
 		}
-		return true;
 	}
 	
-	public boolean findOne(Persistant obj){
-		List<String[]> list=null;
-		try {
-			list = handler.readCSV(path);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		String key=obj.getKey();
-		if(list!=null){			
-			for(String[]arr:list){
-				if(arr[0].equals(key))
-					return true;
-			}
-		}
-		return false;
-	}
 }
