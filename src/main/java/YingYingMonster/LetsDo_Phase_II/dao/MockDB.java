@@ -3,18 +3,16 @@ package YingYingMonster.LetsDo_Phase_II.dao;
 import java.io.IOException;
 import java.util.List;
 
-import YingYingMonster.LetsDo_Phase_II.model.Persistant;
-
 public interface MockDB {
 
-	public boolean createTable(String name,String[] attributes)throws IOException;
+	public boolean createTable(String name)throws IOException;
 	
-	public boolean insert(String tableName,Persistant obj);
+	public boolean insert(String tableName,Object obj);
 	
-	public List<String[]>readTable(String tableName);
+	public List<Object>readTable(String tableName);
 	
-	public boolean modify(String tableName,Persistant obj);
+	public boolean modify(String tableName,Object obj);
 	
-	public boolean delete(String tableName,Persistant obj);
+	public boolean delete(String tableName,Object obj);
 	
 }

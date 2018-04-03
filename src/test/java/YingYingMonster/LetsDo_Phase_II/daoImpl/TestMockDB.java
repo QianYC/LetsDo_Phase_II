@@ -3,6 +3,8 @@ package YingYingMonster.LetsDo_Phase_II.daoImpl;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Set;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -29,8 +31,15 @@ public class TestMockDB {
 		user.name="testName";
 		user.pw="testPw";
 		
-//		db.createTable("users", new String[]{"id","name","password"});
 		assertEquals(true,db.insert("users", user));
+	}
+	
+	@Test
+	public void testTables(){
+		HashMap<String,MockTable>tables=db.getTables();
+		Set<String>keys=tables.keySet();
+		for(String str:keys)
+			System.out.println(tables.get(str).path);
 	}
 
 }
