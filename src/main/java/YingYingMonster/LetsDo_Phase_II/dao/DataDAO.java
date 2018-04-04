@@ -1,5 +1,6 @@
 package YingYingMonster.LetsDo_Phase_II.dao;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -31,8 +32,11 @@ public interface DataDAO {
 	 * @param publisherId
 	 * @param projectId
 	 * @return
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 * @throws FileNotFoundException 
 	 */
-	public double viewProjectProgress(String publisherId,String projectId);
+	public double viewProjectProgress(String publisherId,String projectId) throws FileNotFoundException, ClassNotFoundException, IOException;
 	
 	/**
 	 * 查看某个项目的提交记录

@@ -57,16 +57,8 @@ public class DataDAOImpl implements DataDAO{
 	@Override
 	public int uploadDataSet(String publisherId, String dataSetId, int packSize,byte[] dataSet) throws IOException {
 		// TODO 自动生成的方法存根
-		List<YingYingMonster.LetsDo_Phase_II.model.Project> projects=projectDAOImpl.publisherViewProjects(publisherId);
-        int pacSize=0,picNum=0;
-        for(YingYingMonster.LetsDo_Phase_II.model.Project p:projects){
-        	if(p.getProjectId().equals(dataSetId)){
-        		pacSize=p.getPackageNum();
-        		break;
-        	}
-        }
-        if(pacSize==0)
-        	return false;
+        if(packSize<=0)
+        	return -1;
         
 		BufferedOutputStream bos=null;
 		FileOutputStream fos=null;
@@ -75,7 +67,7 @@ public class DataDAOImpl implements DataDAO{
 		if(!dir.exists()&&!dir.isDirectory())
 			dir.mkdirs();
 		else{
-			return false;
+			return -1;
 		}
 		dataSetDes=new File(dir.getPath()+"/"+dataSetId+".zip");
 		try {
@@ -99,6 +91,7 @@ public class DataDAOImpl implements DataDAO{
 		}
 		
 		//解压
+		int picNum=0;
 		String outPath=dir.getPath()+"/";
 		ZipFile zipFile = new ZipFile(dataSetDes,"GBK");//压缩文件的实列,并设置编码  
         //获取压缩文中的所有项  
@@ -134,8 +127,7 @@ public class DataDAOImpl implements DataDAO{
         
         //分包
         if(picNum==0)
-        	return false;
-        projectDAOImpl.modifyPicNum(publisherId, dataSetId,picNum);
+        	return 0;
         
         int index=0;
         File[] files=new File(outPath).listFiles(new FilenameFilter(){
@@ -172,7 +164,7 @@ public class DataDAOImpl implements DataDAO{
         	publisherFork.getParentFile().mkdirs();
         	publisherFork.createNewFile();
         }
-		return true;
+		return picNum;
 	}
 
 	@Override
@@ -232,7 +224,7 @@ public class DataDAOImpl implements DataDAO{
 	}
 
 	@Override
-	public double viewProjectProgress(String publisherId, String projectId) {
+	public double viewProjectProgress(String publisherId, String projectId) throws FileNotFoundException, ClassNotFoundException, IOException {
 		// TODO 自动生成的方法存根
 		File tagsSrc=new File(ROOT+"/publishers/"+publisherId+"/"+projectId+"/tags");
 		if(!tagsSrc.exists())
