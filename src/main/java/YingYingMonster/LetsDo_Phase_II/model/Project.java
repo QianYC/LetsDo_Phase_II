@@ -14,13 +14,14 @@ public class Project implements Persistent{
 
 	public Project(){}
 
-	public Project(String publisherId, String projectId, int maxWorkerNum,
-				   int packageNum, String startDate, String endDate, String tagRequirement,
-				   String workerRequirement, int money) {
+	public Project(String publisherId, String projectId, int maxWorkerNum, int packageSize,
+				   int picNum, String startDate, String endDate,
+				   String tagRequirement, String workerRequirement, int money) {
 		this.publisherId = publisherId;
 		this.projectId = projectId;
 		this.maxWorkerNum = maxWorkerNum;
-		this.packageNum = packageNum;
+		this.packageSize = packageSize;
+		this.picNum = picNum;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.tagRequirement = tagRequirement;

@@ -25,13 +25,14 @@ public class PublisherController {
                               @PathVariable ("id") String publisherId,
                               @RequestParam("projectId")String projectId,
                               @RequestParam("maxWorkerNum")int maxWorkerNum,
-                              @RequestParam("packageNum")int packageNum,
+                              @RequestParam("packageSize")int packageSize,
+                              @RequestParam("picNum")int picNum,
                               @RequestParam("startDate")String startDate,
                               @RequestParam("endDate")String endDate,
                               @RequestParam("tagRequirement")String tagRequirement,
                               @RequestParam("workerRequirement")String workerRequirement,
                               @RequestParam("money")int money){
-        Project project=new Project(publisherId,projectId,maxWorkerNum,packageNum,startDate,endDate,tagRequirement,workerRequirement,money);
+        Project project=new Project(publisherId,projectId,maxWorkerNum,packageSize,picNum,startDate,endDate,tagRequirement,workerRequirement,money);
 
         boolean isValid=publisherService.validateProject(publisherId,projectId);
         if(isValid){
@@ -44,6 +45,5 @@ public class PublisherController {
         }else{
             return "repetitive";
         }
-
     }
 }
