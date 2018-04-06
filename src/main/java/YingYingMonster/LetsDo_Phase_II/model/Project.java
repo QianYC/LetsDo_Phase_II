@@ -11,7 +11,24 @@ public class Project implements Persistent{
 	private String tagRequirement,workerRequirement;
 	
 	private int money;//任务赏金
-	
+
+	public Project(){}
+
+	public Project(String publisherId, String projectId, int maxWorkerNum, int packageSize,
+				   int picNum, String startDate, String endDate,
+				   String tagRequirement, String workerRequirement, int money) {
+		this.publisherId = publisherId;
+		this.projectId = projectId;
+		this.maxWorkerNum = maxWorkerNum;
+		this.packageSize = packageSize;
+		this.picNum = picNum;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.tagRequirement = tagRequirement;
+		this.workerRequirement = workerRequirement;
+		this.money = money;
+	}
+
 
 	public String getPublisherId() {
 		return publisherId;
