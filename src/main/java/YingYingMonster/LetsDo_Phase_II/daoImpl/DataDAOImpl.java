@@ -156,6 +156,8 @@ public class DataDAOImpl implements DataDAO{
         if(!publisherPushEvents.exists()){
         	publisherPushEvents.getParentFile().mkdirs();
         	publisherPushEvents.createNewFile();
+        	handler.appendCSV(new String[]{"workerId","date","commitId"}, 
+        			publisherPushEvents.getPath());
         }
         File publisherTags=new File(ROOT+"/publishers/"+publisherId+"/"+dataSetId+"/tags");
         if(!publisherTags.exists())
@@ -164,6 +166,7 @@ public class DataDAOImpl implements DataDAO{
         if(!publisherFork.exists()){
         	publisherFork.getParentFile().mkdirs();
         	publisherFork.createNewFile();
+        	handler.appendCSV(new String[]{"workerId"}, publisherFork.getPath());
         }
 		return picNum;
 	}

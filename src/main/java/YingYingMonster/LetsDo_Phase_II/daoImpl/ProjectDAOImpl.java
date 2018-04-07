@@ -29,45 +29,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 	@Override
 	public boolean addProject(Project project) throws FileNotFoundException, IOException {
 		// TODO 自动生成的方法存根
-		mkdirsInPublishers(project.getPublisherId(),project.getProjectId());
 		return database.insert("projects", project);
-	}
-	
-	/**
-	 * 上传project时为上传者在自己的文件夹里创建project的文件夹
-	 * @param publisherId
-	 * @param projectId
-	 */
-	private void mkdirsInPublishers(String publisherId,String projectId){
-		String path=root+File.separator+"publishers"+File.separator+publisherId
-				+File.separator+projectId;
-		File pj=new File(path);
-		if(!pj.exists())
-			pj.mkdirs();
-		
-		File tags=new File(path+File.separator+"tags");
-		if(!tags.exists())
-			tags.mkdirs();
-		
-		File pushEv=new File(path+File.separator+"pushEvents.csv");
-		if(!pushEv.exists())
-			try {
-				pushEv.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		handler.appendCSV(new String[]{"workerId","date","tagId"}, pushEv.getPath());
-		
-		File fork=new File(path+File.separator+"fork.csv");
-		if(!fork.exists())
-			try {
-				fork.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		handler.appendCSV(new String[]{"workerId"}, fork.getPath());
 	}
 
 	@Override
