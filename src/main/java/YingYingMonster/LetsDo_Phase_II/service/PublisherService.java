@@ -14,10 +14,8 @@ public interface PublisherService {
 
 	public List<Project> searchProjects(String publisherId,String keyword);//根据keyword查找已有的项目，支持模糊查询
 
-	public List<String> viewPushEvents(String publisherId,String projectId);//查看某个项目的提交记录
+	public List<String[]> viewPushEvents(String publisherId,String projectId);//查看某个项目的提交记录
 
 	public byte[] downloadTags(String publisherId,String projectId);//下载所有标注
-	
-	public boolean recharge(int money);//充值
 
 }

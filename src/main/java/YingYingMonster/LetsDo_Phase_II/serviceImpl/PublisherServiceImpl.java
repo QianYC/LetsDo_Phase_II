@@ -81,22 +81,16 @@ public class PublisherServiceImpl implements PublisherService {
 	}
 
 	@Override
-	public List<String> viewPushEvents(String publisherId, String projectId) {
+	public List<String[]> viewPushEvents(String publisherId, String projectId) {
 		// TODO Auto-generated method stub
 		List<String[]>list=dtDao.viewPushEvents(publisherId, projectId);
-		return null;
+		return list;
 	}
 
 	@Override
 	public byte[] downloadTags(String publisherId, String projectId) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean recharge(int money) {
-		// TODO Auto-generated method stub
-		return false;
+		return dtDao.downloadTags(publisherId, projectId);
 	}
 
 }

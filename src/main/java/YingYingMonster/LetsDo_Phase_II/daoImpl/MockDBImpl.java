@@ -86,4 +86,13 @@ public class MockDBImpl implements MockDB {
 		return tables.get(tableName).delete(obj);
 	}
 
+	@Override
+	public Persistent retrieve(String tableName, String key) throws FileNotFoundException, ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		MockTable table=tables.get(tableName);
+		if(table==null)
+			return null;
+		return table.retrieve(key);
+	}
+
 }

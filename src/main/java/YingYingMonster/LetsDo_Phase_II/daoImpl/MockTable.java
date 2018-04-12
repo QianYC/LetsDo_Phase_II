@@ -76,5 +76,17 @@ public class MockTable {
 			return true;
 		}
 	}
+
+	public Persistent retrieve(String key) throws FileNotFoundException, IOException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		File file=new File(path+File.separator+key+".obj");
+		if(file.exists()){
+			ObjectInputStream ois=new ObjectInputStream(new FileInputStream(file));
+			Persistent obj=(Persistent) ois.readObject();
+			ois.close();
+			return obj;
+		}
+		return null;
+	}
 	
 }
