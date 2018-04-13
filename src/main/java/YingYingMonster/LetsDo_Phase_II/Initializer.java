@@ -21,6 +21,7 @@ public class Initializer {
 	private CSVHandler handler=context.getBean(CSVHandler.class);
 	
 	public void initialize(){
+		System.out.println(System.getProperty("user.dir"));
 		System.out.println("initializing...");
 		System.out.println("===============");
 		
@@ -75,7 +76,7 @@ public class Initializer {
 			}
 		}
 		
-		String batchDir=root+"/createTable.yym";
+		String batchDir=System.getProperty("user.dir").replaceAll("\\\\", "/")+"/createTable.yym";
 		File batch=new File(batchDir);
 		if(batch.exists()){
 			System.out.println("running batch");

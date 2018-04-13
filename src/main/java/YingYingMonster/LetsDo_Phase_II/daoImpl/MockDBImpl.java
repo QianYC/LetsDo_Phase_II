@@ -27,6 +27,7 @@ public class MockDBImpl implements MockDB {
 	}
 	
 	public MockDBImpl(){
+		System.out.println("db initialize");
 		tables=new HashMap<>();
 		String path=System.getProperty("user.home").replaceAll("\\\\", "/")+"/database/tables";
 		File file=new File(path);
