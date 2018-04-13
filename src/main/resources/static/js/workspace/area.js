@@ -2,8 +2,9 @@
  * 为区域标注提供加载requirement和提交标记的服务
  */
 
-function getRequirement(){
+function setRequirement(){
 	//加载要求
+	
 }
 
 function submit(){
