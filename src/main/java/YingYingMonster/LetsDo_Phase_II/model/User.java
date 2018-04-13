@@ -35,7 +35,9 @@ public abstract class User implements Persistent{
 		}
 		byte[]bytes=md.digest(pw.getBytes());
 		String input=new String(bytes);
-		return input.equals(pw);
+		
+		
+		return input.equals(this.pw);
 	}
 	public void setPw(String pw) {
 		//md5 encode

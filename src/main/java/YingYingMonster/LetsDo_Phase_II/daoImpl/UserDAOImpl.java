@@ -29,11 +29,10 @@ public class UserDAOImpl implements UserDAO {
 	public User login(String id, String pw) throws FileNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		User user=(User) db.retrieve("users", id);
-		if(user==null)
+		if(user!=null&&user.validatePw(pw)){
+			return user;
+		}else
 			return null;
-		else
-			return user.validatePw(pw)?user:null;
-			
 	}
 
 	@Override

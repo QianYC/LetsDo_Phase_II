@@ -36,5 +36,7 @@ public boolean register(User user) throws FileNotFoundException, IOException;
 	 * @throws ClassNotFoundException 
 	 * @throws FileNotFoundException 
 	 */
-	public User financeTransaction(String userId,long money) throws FileNotFoundException, ClassNotFoundException, IOException;
+	public User financeTransaction(String userId,long money) throws FileNotFoundException, 
+		ClassNotFoundException, IOException;
+	
 }

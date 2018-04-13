@@ -21,7 +21,7 @@ public class MockTable {
 	}
 
 	public boolean insert(Persistent obj) throws FileNotFoundException, IOException {
-		File file=new File(path+File.pathSeparator+obj.getKey()+".obj");
+		File file=new File(path+"/"+obj.getKey()+".object");
 		if(file.exists())
 			return false;
 		
@@ -43,7 +43,7 @@ public class MockTable {
 			for(String str:arr){
 				ObjectInputStream ois=new ObjectInputStream(
 						new FileInputStream(
-								new File(path+File.pathSeparator+str)));
+								new File(path+"/"+str)));
 				Persistent obj=(Persistent) ois.readObject();
 				list.add(obj);
 				ois.close();
@@ -54,7 +54,7 @@ public class MockTable {
 
 	public boolean modify(Persistent obj) throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		File file=new File(path+File.pathSeparator+obj.getKey()+".obj");
+		File file=new File(path+"/"+obj.getKey()+".object");
 		if(!file.exists())
 			return false;
 		
@@ -68,7 +68,7 @@ public class MockTable {
 
 	public boolean delete(Persistent obj) {
 		// TODO Auto-generated method stub
-		File file=new File(path+File.pathSeparator+obj.getKey()+".obj");
+		File file=new File(path+"/"+obj.getKey()+".object");
 		if(!file.exists())
 			return false;
 		else{
@@ -79,8 +79,9 @@ public class MockTable {
 
 	public Persistent retrieve(String key) throws FileNotFoundException, IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
-		File file=new File(path+File.separator+key+".obj");
-		if(file.exists()){
+		File file=new File(path+"/"+key+".object");
+		if(file.exists()){			
+			System.out.println(file.getPath());
 			ObjectInputStream ois=new ObjectInputStream(new FileInputStream(file));
 			Persistent obj=(Persistent) ois.readObject();
 			ois.close();

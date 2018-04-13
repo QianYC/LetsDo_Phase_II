@@ -25,14 +25,14 @@ public class TestMockDB {
 	public static void setUpBeforeClass() throws Exception {
 	}
 
-	@Test
-	public void test() throws IOException {
-		User user=new User();
-		user.name="testName";
-		user.pw="testPw";
-		
-		assertEquals(true,db.insert("users", user));
-	}
+//	@Test
+//	public void test() throws IOException {
+//		User user=new User();
+//		user.name="testName";
+//		user.pw="testPw";
+//		
+//		assertEquals(true,db.insert("users", user));
+//	}
 	
 	@Test
 	public void testTables(){
