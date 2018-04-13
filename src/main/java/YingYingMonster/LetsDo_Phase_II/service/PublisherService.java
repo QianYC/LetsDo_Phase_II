@@ -8,7 +8,9 @@ import YingYingMonster.LetsDo_Phase_II.model.Project;
 
 public interface PublisherService {
 
-	public boolean creatProject(Project project, MultipartFile dataSet);
+	public Project getAProject(String projectId);//根据projectId获取Project对象
+	
+	public boolean createProject(Project project, MultipartFile dataSet);
 
 	public boolean validateProject(String publisherId,String projectId);//新建项目时检查项目名是否合法
 

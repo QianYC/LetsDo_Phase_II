@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import YingYingMonster.LetsDo_Phase_II.dao.DataDAO;
 import YingYingMonster.LetsDo_Phase_II.dao.ProjectDAO;
+import YingYingMonster.LetsDo_Phase_II.exception.TargetNotFoundException;
 import YingYingMonster.LetsDo_Phase_II.model.Project;
 import YingYingMonster.LetsDo_Phase_II.service.PublisherService;
 
@@ -23,7 +24,7 @@ public class PublisherServiceImpl implements PublisherService {
 	DataDAO dtDao;
 	
 	@Override
-	public boolean creatProject(Project project, MultipartFile dataSet) {
+	public boolean createProject(Project project, MultipartFile dataSet) {
 		// TODO Autproject.go-generated method stub
 		try {
 			pjDao.addProject(project);
@@ -91,6 +92,21 @@ public class PublisherServiceImpl implements PublisherService {
 	public byte[] downloadTags(String publisherId, String projectId) {
 		// TODO Auto-generated method stub
 		return dtDao.downloadTags(publisherId, projectId);
+	}
+
+	@Override
+	public Project getAProject(String projectId) {
+		// TODO Auto-generated method stub
+		Project pj=null;
+		try {
+			pj=pjDao.getAProject(projectId);
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(pj==null)
+			throw new TargetNotFoundException();
+		return pj;
 	}
 
 }
