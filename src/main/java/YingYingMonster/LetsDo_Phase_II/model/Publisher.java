@@ -14,5 +14,16 @@ public class Publisher extends User {
 		return getId();
 	}
 
+	public Publisher(){}
+	
+	public Publisher(String id,String name,String pw,String email,String intro,long money){
+		super();
+		this.setId(id);
+		this.setName(name);
+		this.setPw(pw);
+		this.setEmail(email);
+		this.setIntro(intro);
+		this.setMoney(money);
+	}
 	
 }
