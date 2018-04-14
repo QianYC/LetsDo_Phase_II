@@ -95,11 +95,11 @@ public class PublisherServiceImpl implements PublisherService {
 	}
 
 	@Override
-	public Project getAProject(String projectId) {
+	public Project getAProject(String publisherId,String projectId) {
 		// TODO Auto-generated method stub
 		Project pj=null;
 		try {
-			pj=pjDao.getAProject(projectId);
+			pj=pjDao.getAProject(publisherId,projectId);
 		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -62,7 +63,39 @@ public class TestProjectDAOImpl {
 	}
 
 	@Test
-	public void publisherViewProjects(){
+	public void publisherViewProjects() throws FileNotFoundException, ClassNotFoundException, IOException{
+		setUp();
+		List<Project>list=pjDao.publisherViewProjects("pubid");
+		assertEquals("pid",list.get(0).getProjectId());
 		
+		List<Project>list2=pjDao.publisherViewProjects("kate");
+		assertEquals(0,list2.size());
+		tearDown();
+	}
+	
+	@Test
+	public void getAProject() throws FileNotFoundException, ClassNotFoundException, IOException{
+		setUp();
+		Project pj1=pjDao.getAProject("pubid","pid");
+		Project pj2=pjDao.getAProject("pubid","pid2");
+		
+		assertEquals(100,pj1.getMaxWorkerNum());
+		assertNull(pj2);
+		tearDown();
+	}
+	
+	@Test
+	public void modifyCurrentWorkerNum() throws FileNotFoundException, ClassNotFoundException, IOException{
+		setUp();
+		Project pj1=pjDao.getAProject("pubid","pid");
+		assertEquals(0,pj1.getCurrWorkerNum());
+		
+		assertEquals(true,pjDao.modifyCurrentWorkerNum("pubid", "pid"));
+		Project pj2=pjDao.getAProject("pubid","pid");
+		assertEquals(1,pj2.getCurrWorkerNum());
+		
+		assertEquals(false,pjDao.modifyCurrentWorkerNum("pubid1", "pid"));
+		
+		tearDown();
 	}
 }

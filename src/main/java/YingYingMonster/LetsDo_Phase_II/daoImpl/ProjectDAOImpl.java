@@ -92,9 +92,9 @@ public class ProjectDAOImpl implements ProjectDAO {
 	}
 
 	@Override
-	public Project getAProject(String projectId) throws FileNotFoundException, ClassNotFoundException, IOException {
+	public Project getAProject(String publisherId,String projectId) throws FileNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		return (Project) database.retrieve("projects", projectId);
+		return (Project) database.retrieve("projects", publisherId+"_"+projectId);
 	}
 
 }
