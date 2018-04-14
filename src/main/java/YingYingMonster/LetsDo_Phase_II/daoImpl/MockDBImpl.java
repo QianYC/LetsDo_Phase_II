@@ -1,16 +1,14 @@
 package YingYingMonster.LetsDo_Phase_II.daoImpl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import YingYingMonster.LetsDo_Phase_II.dao.MockDB;
-import YingYingMonster.LetsDo_Phase_II.model.Persistant;
+import YingYingMonster.LetsDo_Phase_II.model.Persistent;
 
 @Component
 public class MockDBImpl implements MockDB {
@@ -23,31 +21,33 @@ public class MockDBImpl implements MockDB {
 	
 	private HashMap<String,MockTable>tables;
 	
+	//for test
+	public HashMap<String,MockTable>getTables(){
+		return tables;
+	}
+	
 	public MockDBImpl(){
+		System.out.println("db initialize");
 		tables=new HashMap<>();
 		String path=System.getProperty("user.home").replaceAll("\\\\", "/")+"/database/tables";
 		File file=new File(path);
 		String[]fileNames=file.list();
 		if(fileNames!=null){			
 			for(String str:fileNames){
-				String tableName=str.split("\\.")[0];
-				tables.put(tableName, new MockTable(path+"/"+str));
+				tables.put(str, new MockTable(path+"/"+str));
 			}
 		}
 	}
 	
 	@Override
-	public boolean createTable(String name, String[] attributes) throws IOException {
+	public boolean createTable(String name) throws IOException {
 		// TODO Auto-generated method stub
 		if(tables.get(name)!=null)
 			return false;
 		
-		String path=ROOT+"/tables/"+name+".csv";
+		String path=ROOT+"/tables/"+name;
 		File file=new File(path);
-		file.createNewFile();
-		List<String[]>list=new ArrayList<>();
-		list.add(attributes);
-		handler.writeCSV(list, path);
+		file.mkdirs();
 		
 		MockTable table=new MockTable(path);
 		tables.put(name, table);
@@ -55,7 +55,7 @@ public class MockDBImpl implements MockDB {
 	}
 
 	@Override
-	public boolean insert(String tableName, Persistant obj) {
+	public boolean insert(String tableName, Persistent obj) throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		if(tables.get(tableName)==null)
 			return false;
@@ -64,7 +64,7 @@ public class MockDBImpl implements MockDB {
 	}
 
 	@Override
-	public List<String[]> readTable(String tableName) {
+	public List<Persistent> readTable(String tableName) throws FileNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		if(tables.get(tableName)==null)
 			return null;
@@ -72,7 +72,7 @@ public class MockDBImpl implements MockDB {
 	}
 
 	@Override
-	public boolean modify(String tableName,Persistant obj) {
+	public boolean modify(String tableName,Persistent obj) throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
 		if(tables.get(tableName)==null)
 			return false;
@@ -80,11 +80,20 @@ public class MockDBImpl implements MockDB {
 	}
 
 	@Override
-	public boolean delete(String tableName,Persistant obj) {
+	public boolean delete(String tableName,Persistent obj) {
 		// TODO Auto-generated method stub
 		if(tables.get(tableName)==null)
 			return false;
 		return tables.get(tableName).delete(obj);
+	}
+
+	@Override
+	public Persistent retrieve(String tableName, String key) throws FileNotFoundException, ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		MockTable table=tables.get(tableName);
+		if(table==null)
+			return null;
+		return table.retrieve(key);
 	}
 
 }
