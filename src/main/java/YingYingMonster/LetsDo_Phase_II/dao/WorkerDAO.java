@@ -13,15 +13,15 @@ public interface WorkerDAO {
 	
 	public boolean fork(String workerId,String publisherId,String projectId) throws FileNotFoundException, ClassNotFoundException, IOException;
 	
-	public boolean uploadTag(String userId, String projectId, String tagId, Tag tag);
+	public boolean uploadTag(String workerId,String publisherId, String projectId, String tagId, Tag tag) throws FileNotFoundException, IOException;
 	
-	public Tag downloadTag(String userId, String projectId, String tagId);
+	public Tag downloadTag(String workerId,String publisherId, String projectId, String tagId) throws FileNotFoundException, ClassNotFoundException, IOException;
 	
-	public List<String>viewUndoData(String workerId,String projectId);
+	public List<String>viewUndoData(String workerId,String publisherId,String projectId);
 
-	public List<String>viewDoneData(String workerId,String projectId);
+	public List<String>viewDoneData(String workerId,String publisherId,String projectId);
 
-	public byte[]getAData(String workerId,String projectId,String dataId);
+	public byte[]getAData(String workerId,String publisherId,String projectId,String dataId);
 	
 	public boolean push(String workerId,String publisherId,String projectId);
 }
