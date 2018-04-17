@@ -9,7 +9,7 @@ import YingYingMonster.LetsDo_Phase_II.model.Tag;
 
 public interface WorkerDAO {
 
-	public List<Project>viewWorkerProject(String workerId);
+	public List<Project>viewWorkerProject(String workerId) throws FileNotFoundException, ClassNotFoundException, IOException;
 	
 	public boolean fork(String workerId,String publisherId,String projectId) throws FileNotFoundException, ClassNotFoundException, IOException;
 	
