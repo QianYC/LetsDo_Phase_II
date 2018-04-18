@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/publisher/{id}")
+@RequestMapping("/publisher")
 public class PublisherController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class PublisherController {
     @PostMapping("/publish")
     @ResponseBody
     public String createProject(@RequestParam("dataSet")MultipartFile dataSet,
-                              @PathVariable ("id") String publisherId,
+                              @RequestParam ("userId") String publisherId,
                               @RequestParam("projectId")String projectId,
                               @RequestParam("maxWorkerNum")int maxWorkerNum,
                               @RequestParam("packageSize")int packageSize,

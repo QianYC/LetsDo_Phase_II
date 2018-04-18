@@ -2,95 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b93577f-f073-4a90-97cc-2202079526ed" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/css/bootstrap3.3.4.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/css/custom-styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/css/fileUploadStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/css/font-awesome.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/font-awesome/fonts/fontawesome-webfontba72.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/font-awesome/fonts/fontawesome-webfontba72.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/font-awesome/fonts/fontawesome-webfontba72.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/font-awesome/fonts/fontawesome-webfontba72.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/font-awesome/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/fonts/glyphicons-halflings-regulard41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/img/bg-img.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/Lightweight-Chart/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/Lightweight-Chart/chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/Lightweight-Chart/cssCharts.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/Lightweight-Chart/index - Copy.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/Lightweight-Chart/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/Lightweight-Chart/jquery.chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/Lightweight-Chart/jquery.chart.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/chart-data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/chart.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/custom-scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/custom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/dataTables/dataTables.bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/dataTables/dataTables.bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/dataTables/jquery.dataTables.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/easypiechart-data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/easypiechart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/filedrag.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/jquery-1.10.2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/jquery.metisMenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/morris/morris-0.4.3.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/morris/morris.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/morris/morris.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/morris/morrisold.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/morris/raphael-2.1.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap-datetimepicker/css/datetimepicker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/css/bootstrap-responsive.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/fonts/glyphicons-halflings-regulard41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/img/glyphicons-halflings-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/img/glyphicons-halflings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/bootstrap300/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/demo-bs3.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/demo-mock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/jquery/jquery-1.9.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/mockjax/jquery.mockjax.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/momentjs/moment.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/select2/select2-bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/select2/select2-spinner.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/select2/select2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/select2/select2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/select2/select2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/bootstrap3-editable/css/bootstrap-editable.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/bootstrap3-editable/img/clear.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/bootstrap3-editable/img/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/bootstrap3-editable/js/bootstrap-editable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/bootstrap3-editable/js/bootstrap-editable.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/address/address.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/address/address.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/typeaheadjs/lib/typeahead.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/typeaheadjs/lib/typeahead.js-bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/typeaheadjs/typeaheadjs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysiwyg-color.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/table/x-editable/inputs-ext/wysihtml5/wysihtml5.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/publisher/origin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/publisher/js/publish.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/ProjectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/PublisherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/PublisherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/morris/morris.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/morris/morris.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/morris/morris.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/morris/morris.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/morris/morrisold.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/morris/morrisold.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/publisher/publish.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/publisher/publish.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -105,8 +20,8 @@
       <file leaf-file-name="PublisherController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/PublisherController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1704">
-              <caret line="84" column="18" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
+            <state relative-caret-position="432">
+              <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2940#2941#0" expanded="true" />
@@ -116,11 +31,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="origin.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/origin.html">
+      <file leaf-file-name="publish.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/publisher/js/publish.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="472" column="58" lean-forward="true" selection-start-line="472" selection-start-column="58" selection-end-line="472" selection-end-column="58" />
+            <state relative-caret-position="24">
+              <caret line="1" column="50" lean-forward="true" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="publish.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/publish.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1392">
+              <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
               <folding>
                 <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#li#0;n#ul#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -140,6 +64,15 @@
                 <element signature="n#style#0;n#i#0;n#a#0;n#td#0;n#tr#9;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProjectController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/ProjectController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -171,8 +104,9 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/model/Project.java" />
         <option value="$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/ProjectController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/PublisherController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/publisher/origin.html" />
+        <option value="$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/PublisherController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/publisher/publish.html" />
       </list>
     </option>
   </component>
@@ -197,9 +131,9 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-755" />
+    <option name="y" value="-14" />
     <option name="width" value="1932" />
     <option name="height" value="1048" />
   </component>
@@ -291,6 +225,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LetsDo_Phase_II" type="b2602c69:ProjectViewProjectNode" />
+              <item name="phase2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="publisher" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -301,7 +244,7 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="publisher" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LetsDo_Phase_II" type="b2602c69:ProjectViewProjectNode" />
@@ -338,14 +281,16 @@
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="X:\javaProjects\SE3\phase2\src\main\resources\static\publisher\css" />
-      <recent name="X:\javaProjects\SE3\phase2\src\main\resources\templates\publisher" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="X:\javaProjects\SE3\phase2\src\main\resources\static" />
       <recent name="X:\javaProjects\SE3\phase2\src\main\resources\templates\publisher" />
       <recent name="X:\javaProjects\SE3\phase2\src\main\resources\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="X:\javaProjects\SE3\phase2\src\main\resources\static\publisher\js" />
+      <recent name="X:\javaProjects\SE3\phase2\src\main\resources\static\js\util" />
+      <recent name="X:\javaProjects\SE3\phase2\src\main\resources\static\publisher\css" />
+      <recent name="X:\javaProjects\SE3\phase2\src\main\resources\templates\publisher" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -442,12 +387,12 @@
       <workItem from="1523700380893" duration="6601000" />
       <workItem from="1523876264600" duration="4039000" />
       <workItem from="1523969753585" duration="1039000" />
-      <workItem from="1524051603923" duration="337000" />
+      <workItem from="1524051603923" duration="3213000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18949000" />
+    <option name="totallyTimeSpent" value="21825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -473,7 +418,7 @@
       <window_info anchor="bottom" id="Run" order="5" />
       <window_info anchor="bottom" id="Spring" order="10" />
       <window_info anchor="bottom" id="Terminal" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.26489362" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.17765957" />
       <window_info anchor="right" id="Bean Validation" order="10" />
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="5" />
@@ -518,7 +463,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/origin.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/publish.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11304">
           <caret line="471" column="69" lean-forward="true" selection-start-line="471" selection-start-column="69" selection-end-line="471" selection-end-column="69" />
@@ -563,7 +508,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/origin.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/publish.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
@@ -768,19 +713,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/ProjectController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/contact/contact_me.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/contact/jqBootstrapValidation.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/model/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="984">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        <state relative-caret-position="48">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/contact/contact_me.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/contact/jqBootstrapValidation.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/ProjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/controller/PublisherController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1704">
-          <caret line="84" column="18" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
+        <state relative-caret-position="432">
+          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2940#2941#0" expanded="true" />
@@ -789,17 +741,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/YingYingMonster/LetsDo_Phase_II/model/Project.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/util/cookie.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="144">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/origin.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/publisher/js/publish.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="472" column="58" lean-forward="true" selection-start-line="472" selection-start-column="58" selection-end-line="472" selection-end-column="58" />
+        <state relative-caret-position="24">
+          <caret line="1" column="50" lean-forward="true" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publisher/publish.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1392">
+          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
           <folding>
             <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#li#0;n#ul#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
