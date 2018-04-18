@@ -14,6 +14,19 @@ public class Tag implements Serializable {
 	private byte[]data;
 	private int width,height;
 	
+	
+	
+	public Tag() {
+		super();
+	}
+	public Tag(String type, Map<String, String> attributes, byte[] data, int width, int height) {
+		super();
+		this.type = type;
+		this.attributes = attributes;
+		this.data = data;
+		this.width = width;
+		this.height = height;
+	}
 	public int getWidth() {
 		return width;
 	}

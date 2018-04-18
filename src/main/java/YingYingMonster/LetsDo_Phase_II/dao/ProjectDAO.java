@@ -75,6 +75,6 @@ public interface ProjectDAO {
 	 */
 	public boolean deleteProject(String publisherId,String projectId) throws FileNotFoundException, ClassNotFoundException, IOException;
 
-	public Project getAProject(String projectId) throws FileNotFoundException, ClassNotFoundException, IOException;
+	public Project getAProject(String publisherId,String projectId) throws FileNotFoundException, ClassNotFoundException, IOException;
 	
 }

@@ -8,7 +8,7 @@ import YingYingMonster.LetsDo_Phase_II.model.Project;
 
 public interface PublisherService {
 
-	public Project getAProject(String projectId);//根据projectId获取Project对象
+	public Project getAProject(String publisherId,String projectId);//根据publisherId,projectId获取Project对象
 	
 	public boolean createProject(Project project, MultipartFile dataSet);
 

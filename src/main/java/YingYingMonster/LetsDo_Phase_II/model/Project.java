@@ -4,7 +4,9 @@ public class Project implements Persistent{
 
 	private String publisherId,projectId;//发布者id，项目id
 	
-	private int maxWorkerNum,currWorkerNum,packageSize,picNum;//允许最大参加人数，当前人数，分包数，图片数
+	private int maxWorkerNum,currWorkerNum,packageNum,picNum;//允许最大参加人数，当前人数，分包数，图片数
+	
+	private int[]pkgs;//记录每个包参加人数，用于fork
 	
 	private String startDate,endDate;//yyyy-MM-dd
 	
@@ -14,21 +16,39 @@ public class Project implements Persistent{
 
 	public Project(){}
 
-	public Project(String publisherId, String projectId, int maxWorkerNum, int packageSize,
+	public Project(String publisherId, String projectId, int maxWorkerNum, int packageNum,
 				   int picNum, String startDate, String endDate,
 				   String tagRequirement, String workerRequirement, int money) {
 		this.publisherId = publisherId;
 		this.projectId = projectId;
 		this.maxWorkerNum = maxWorkerNum;
-		this.packageSize = packageSize;
+		this.packageNum = packageNum;
 		this.picNum = picNum;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.tagRequirement = tagRequirement;
 		this.workerRequirement = workerRequirement;
 		this.money = money;
+		
+		setPkgs();
+	}
+	
+	private void setPkgs(){
+		pkgs=new int[packageNum];
+		int wkPpkg=maxWorkerNum/packageNum;
+		for(int i=0;i<pkgs.length-1;i++){
+			pkgs[i]=wkPpkg;
+		}
+		pkgs[pkgs.length-1]=maxWorkerNum-wkPpkg*(pkgs.length-1);
 	}
 
+	public int[] getPkgs() {
+		return pkgs;
+	}
+
+	public void setPkgs(int[] pkgs) {
+		this.pkgs = pkgs;
+	}
 
 	public String getPublisherId() {
 		return publisherId;
@@ -63,11 +83,11 @@ public class Project implements Persistent{
 	}
 
 	public int getPackageNum() {
-		return packageSize;
+		return packageNum;
 	}
 
 	public void setPackageNum(int packageNum) {
-		this.packageSize = packageNum;
+		this.packageNum = packageNum;
 	}
 
 	public String getStartDate() {
