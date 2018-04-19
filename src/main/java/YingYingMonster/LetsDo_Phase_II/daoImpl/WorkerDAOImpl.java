@@ -1,18 +1,27 @@
 package YingYingMonster.LetsDo_Phase_II.daoImpl;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import javax.imageio.ImageIO;
+import javax.imageio.stream.FileImageInputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.thymeleaf.util.ListUtils;
 
 import YingYingMonster.LetsDo_Phase_II.dao.MockDB;
 import YingYingMonster.LetsDo_Phase_II.dao.WorkerDAO;
+import YingYingMonster.LetsDo_Phase_II.model.Data;
 import YingYingMonster.LetsDo_Phase_II.model.Project;
 import YingYingMonster.LetsDo_Phase_II.model.Tag;
 
@@ -56,7 +65,8 @@ public class WorkerDAOImpl implements WorkerDAO {
 			return false;
 		}
 		
-		Iterator<String>it=Stream.of(folder.list()).filter(x->x.contains(publisherId+"_"+projectId))
+		Iterator<String>it=Stream.of(folder.list())
+				.filter(x->x.substring(0,x.lastIndexOf("_")).equals(publisherId+"_"+projectId))
 				.iterator();
 		
 		if(it.hasNext()){
@@ -103,7 +113,8 @@ public class WorkerDAOImpl implements WorkerDAO {
 		if(!folder.exists())
 			return false;
 		
-		Iterator<String>it=Stream.of(folder.list()).filter(x->x.contains(publisherId+"_"+projectId))
+		Iterator<String>it=Stream.of(folder.list())
+				.filter(x->x.substring(0,x.lastIndexOf("_")).equals(publisherId+"_"+projectId))
 				.iterator();
 		
 		if(!it.hasNext())
@@ -123,7 +134,8 @@ public class WorkerDAOImpl implements WorkerDAO {
 		if(!folder.exists())
 			return null;
 		
-		Iterator<String>it=Stream.of(folder.list()).filter(x->x.contains(publisherId+"_"+projectId))
+		Iterator<String>it=Stream.of(folder.list())
+				.filter(x->x.substring(0,x.lastIndexOf("_")).equals(publisherId+"_"+projectId))
 				.iterator();
 		
 		if(!it.hasNext())
@@ -138,24 +150,72 @@ public class WorkerDAOImpl implements WorkerDAO {
 	@Override
 	public List<String> viewUndoData(String workerId,String publisherId, String projectId) {
 		// TODO Auto-generated method stub
-		return null;
+		String pkgId=pkgId(workerId, publisherId, projectId);
+//		System.out.println(pkgId);
+		
+		File pj=new File(root+"/dataSet/"+publisherId+"_"+projectId+"/"+pkgId);
+		List<String>list=Stream.of(pj.list()).map(x->x.split("\\.")[0]).collect(Collectors.toList());
+		list.removeAll(viewDoneData(workerId,publisherId,projectId));
+		return list;
 	}
 
 	@Override
 	public List<String> viewDoneData(String workerId,String publisherId, String projectId) {
 		// TODO Auto-generated method stub
-		return null;
+		File wkfd=new File(root+"/workers/"+workerId);
+		Iterator<String>it=Stream.of(wkfd.list())
+				.filter(x->x.substring(0,x.lastIndexOf("_")).equals(publisherId+"_"+projectId))
+				.iterator();
+		if(!it.hasNext())
+			return null;
+		File pj=new File(wkfd.getPath()+"/"+it.next());
+//		System.out.println(pj.getPath());
+		return Stream.of(pj.list()).map(x->x.split("\\.")[0]).collect(Collectors.toList());
 	}
 
 	@Override
-	public byte[] getAData(String workerId,String publisherId, String projectId, String dataId) {
+	public Data getAData(String workerId,String publisherId, String projectId, String dataId) throws IOException {
 		// TODO Auto-generated method stub
-		return null;
+		String pkgId=pkgId(workerId, publisherId, projectId);
+		Data data=new Data();
+		
+		//获得图片尺寸
+		BufferedImage bi=ImageIO.read(
+				new File(root+"/dataSet/"+publisherId+"_"+projectId+"/"+pkgId));
+		data.setWidth(bi.getWidth());
+		data.setHeight(bi.getHeight());
+		
+		//获得byte数组
+		FileImageInputStream fiis=new FileImageInputStream(
+				new File(root+"/dataSet/"+publisherId+"_"+projectId+"/"+pkgId));
+		ByteArrayOutputStream baos=new ByteArrayOutputStream();
+		int btnum=0;
+		byte[]buf=new byte[1024];
+		while((btnum=fiis.read(buf))!=-1)
+			baos.write(buf, 0, btnum);
+		data.setData(baos.toByteArray());
+		fiis.close();
+		baos.close();
+		
+		return data;
 	}
 
+	private String pkgId(String wkId,String pubId,String pjId){
+		File wkfd=new File(root+"/workers/"+wkId);
+		Iterator<String>it=Stream.of(wkfd.list())
+				.filter(x->x.substring(0,x.lastIndexOf("_")).equals(pubId+"_"+pjId))
+				.iterator();
+		if(!it.hasNext())
+			return null;
+		String pkgId=it.next();
+		pkgId="pac"+pkgId.substring(pkgId.lastIndexOf("_")+1);
+		return pkgId;
+	}
+	
 	@Override
 	public boolean push(String workerId, String publisherId, String projectId) {
 		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
