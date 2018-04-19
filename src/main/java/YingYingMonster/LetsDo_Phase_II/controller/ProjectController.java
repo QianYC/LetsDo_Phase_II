@@ -14,6 +14,11 @@ public class ProjectController {
     @Autowired
     PublisherService publisherService;
 
+    /**
+    * 查找当前发布的项目列表
+    * @param id 上传者用户id
+    * @param keyword 关键字，可以为空
+    */
     @PostMapping("/publisherProjects")
     @ResponseBody
     public String queryProjects(@PathVariable("id") String id, @RequestParam("keyword") String keyword){
@@ -36,17 +41,12 @@ public class ProjectController {
         return "projects/publisherProjectDetail";
     }
 
-    //获取项目详情
+    //异步获取项目详情
     //返回json，待解决
     @PostMapping("/{projectName}")
     @ResponseBody
     public Project projectDetail(@PathVariable("projectName") String projectName){
         return null;
-    }
-
-    //请求提交记录界面
-    public String pushEventsPage(){
-
     }
 
 }

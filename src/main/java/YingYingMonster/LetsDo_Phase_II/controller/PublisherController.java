@@ -8,21 +8,23 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/publisher/{id}")
+@RequestMapping("/publisher")
 public class PublisherController {
 
     @Autowired
     private PublisherService publisherService;
 
+    //发布者界面
     @GetMapping("/publish")
     public String publishPage(){
-        return "publish";
+        return "publisher/publish";
     }
 
+    //请求发布项目
     @PostMapping("/publish")
     @ResponseBody
     public String createProject(@RequestParam("dataSet")MultipartFile dataSet,
-                              @PathVariable ("id") String publisherId,
+                              @RequestParam ("userId") String publisherId,
                               @RequestParam("projectId")String projectId,
                               @RequestParam("maxWorkerNum")int maxWorkerNum,
                               @RequestParam("packageSize")int packageSize,
@@ -36,7 +38,7 @@ public class PublisherController {
 
         boolean isValid=publisherService.validateProject(publisherId,projectId);
         if(isValid){
-            boolean success=publisherService.creatProject(project,dataSet);
+            boolean success=publisherService.createProject(project,dataSet);
             if(success){
                 return "success";
             }else{
@@ -45,5 +47,44 @@ public class PublisherController {
         }else{
             return "repetitive";
         }
+    }
+
+    //请求提交记录界面
+    @GetMapping("/{projectName}/pushEvents")
+    public String pushEventsPage(@PathVariable("id")String id,@PathVariable("projectName")String projectName){
+        return "pushEvents";
+    }
+
+    //异步请求提交记录信息
+    @PostMapping("/{projectName}/pushEvents")
+    @ResponseBody
+    public String pushEvents(@PathVariable("id")String id,@PathVariable("projectName")String projectName){
+        return "消息记录";
+        //返回消息记录
+    }
+
+
+    //查看项目内图片列表
+    @GetMapping("/{projectName}/pictures")
+    public String pictureListPage(@PathVariable("projectName")String projectName){
+        return "pictureListPage";
+    }
+
+    @PostMapping("/{projectName}/pictures")
+    @ResponseBody
+    public String pictureList(@PathVariable("projectName")String projectName){
+        return null;//返回图片列表
+    }
+
+    //查看标注情况
+    @GetMapping("/{projectName}/{pictureId}")
+    public String pictureTagPage(){
+        return "tagPage";
+    }
+
+    @PostMapping("/{projectName}/{pictureId}")
+    @ResponseBody
+    public String pictureTag(@PathVariable("projectName")String projectName,@PathVariable("pictureId")String pictureId){
+        return null;//返回各种图片信息，问下jbs
     }
 }
