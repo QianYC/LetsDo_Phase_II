@@ -34,8 +34,8 @@ html { overflow-x: hidden; overflow-y: auto; }
 
 #tools {
 		position:relative;
-	 	left: 950px;
-	 	top: 100px;
+	 	left: 1000px;
+	 	top: 90px;
 	 	width: 200px;
 	    height: 500px;
 }
@@ -56,7 +56,7 @@ html { overflow-x: hidden; overflow-y: auto; }
 	
 	position:relative;
 	 	left: 950px;
-	 	top: -500px;
+	 	top: -470px;
 	 	width: 35px;
 	    height: 35px;
 	    transition:  0.1s;
@@ -76,7 +76,7 @@ html { overflow-x: hidden; overflow-y: auto; }
 #submitHover{
 	position:relative;
 	 	left: 950px;
-	 	top: -500px;
+	 	top: -470px;
 	 	width: 35px;
 	    height: 35px;
 }

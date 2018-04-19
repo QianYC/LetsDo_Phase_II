@@ -347,26 +347,28 @@
 				<!--我们的操作区开始  -->
  <div id = "tools" > 
 <!-- 工具栏开始 -->
-			  <img alt="铅笔" id="pencil" src="/pic/tools/pencil.png" class="tools" onMouseMove="hoverIn('pencil')" onMouseOut="hoverOut('pencil')">
+			  <img alt="铅笔" id="pencil" src="/pic/tools/pencil_len.png" class="tools" onMouseMove="hoverIn('pencil')" onMouseOut="hoverOut('pencil')">
               <img alt="铅笔" class="toolsHover" src="/pic/tools/pencil_hover.png" hidden="hidden" id="pencilHover"/><br>
-              <img alt="直线" id="line" src="/pic/tools/line.png" class="tools" onMouseMove="hoverIn('line')" onMouseOut="hoverOut('line')">
+              <img alt="直线" id="line" src="/pic/tools/line_len.png" class="tools" onMouseMove="hoverIn('line')" onMouseOut="hoverOut('line')">
               <img alt="直线" class="toolsHover" src="/pic/tools/line_hover.png" hidden="hidden" id="lineHover"/><br>
-              <img alt="矩形" id="square" src="/pic/tools/square.png" class="tools" onMouseMove="hoverIn('square')" onMouseOut="hoverOut('square')">
+              <img alt="矩形" id="square" src="/pic/tools/square_len.png" class="tools" onMouseMove="hoverIn('square')" onMouseOut="hoverOut('square')">
 	          <img alt="矩形" class="toolsHover" src="/pic/tools/square_hover.png" hidden="hidden" id="squareHover"/><br>
-              <img alt="圆形" id="circle" src="/pic/tools/circle.png" class="tools" onMouseMove="hoverIn('circle')" onMouseOut="hoverOut('circle')">
+              <img alt="圆形" id="circle" src="/pic/tools/circle_len.png" class="tools" onMouseMove="hoverIn('circle')" onMouseOut="hoverOut('circle')">
               <img alt="圆形" class="toolsHover" src="/pic/tools/circle_hover.png" hidden="hidden" id="circleHover"/><br>
-              <img alt="橡皮擦" id="rubber" src="/pic/tools/rubber.png" class="tools" onMouseMove="hoverIn('rubber')" onMouseOut="hoverOut('rubber')">
+              <img alt="橡皮擦" id="rubber" src="/pic/tools/rubber_len.png" class="tools" onMouseMove="hoverIn('rubber')" onMouseOut="hoverOut('rubber')">
 	          <img alt="橡皮擦" class="toolsHover" src="/pic/tools/rubber_hover.png" hidden="hidden" id="rubberHover"/><br>
-	          <img alt="清空" id = "clearAll" src="/pic/tools/clear.png" onClick="clearAllMark()" class="tools" onMouseMove="hoverIn('clear')" onMouseOut="hoverOut('clear')">
+	          <img alt="清空" id = "clearAll" src="/pic/tools/clear_len.png" onClick="clearAllMark()" class="tools" onMouseMove="hoverIn('clear')" onMouseOut="hoverOut('clear')">
 	          <img alt="清空" class="toolsHover" src="/pic/tools/clear_hover.png" hidden="hidden" id="clearHover"/><br>
+              <br>
               笔记颜色：<br>
               <input type="color" id="pencilColor" onChange="changePencilColor()" />
               <br>
+               <br>
               笔迹大小：<br>
-              <input type="range" id="pencilSize" min="0.5" max="10" onclick="changePencilSize()" size="60" />
+              <input type="range" id="pencilSize" min="0.5" max="10" onclick="changePencilSize()" />
               <br>
               橡皮擦大小：<br>
-              <input type="range" id="rubberSize" min="0.5" max="100" onclick="changeRubberSize()"  size="60" hidden="hidden" />
+              <input type="range" id="rubberSize" min="0.5" max="100" onclick="changeRubberSize()"/>
               <br>
  </div>
 <!-- 工具栏结束 -->
