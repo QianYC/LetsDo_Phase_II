@@ -4,10 +4,7 @@
 
 function setRequirement(){
 	//加载要求
-	
-}
-
-function submit(){
-	//提交标记
+	var req = "钱宇辰就是猪猪呀！";//需要调用ajax获得
+	$("#requirement").val(req);
 }
 

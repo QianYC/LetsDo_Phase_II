@@ -51,7 +51,7 @@ public class TestWorkerServiceImpl {
 		setUp();
 		List<String>list=wkService.viewAllProjects();
 		assertEquals("pig",list.get(0));
-		tearDown();
+//		tearDown();
 	}
 
 }

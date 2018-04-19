@@ -5,20 +5,23 @@ import java.io.OutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import YingYingMonster.LetsDo_Phase_II.service.Mock_WorkSpaceServiceImpl;
+import YingYingMonster.LetsDo_Phase_II.service.WorkerService;
 
 
 @Controller
 @RequestMapping("/workspace")
 public class WorkSpaceController {
 	
-	Mock_WorkSpaceServiceImpl service = new Mock_WorkSpaceServiceImpl();
+	@Autowired
+	private WorkerService service;
 	
 	/**
 	 * 
@@ -63,22 +66,23 @@ public class WorkSpaceController {
 	 * 
 	 * @param projectId
 	 * @param userId
-	 * @return 返回图片的id  id之间以; 隔开
+	 * @return 返回已经完成的图片的id  id之间以; 隔开
 	 */
 	@GetMapping("/viewDone/{userId}/{projectId}/getPictureIdList")
 	@ResponseBody
-	public String getPictureIdList(@PathVariable("projectId")String projectId ,
+	public String getDonePictureIdList(@PathVariable("projectId")String projectId ,
 			@PathVariable("userId")String userId ) {
 		String str = "picture1;picture2;picture3;picture4;picture5;picture6;picture7;picture8;picture9;picture10;picture11;picture12;picture13;picture14;picture15;picture16;picture17;picture18";//从service获得
 		return str;
 	}
 	
+	
 	/**
-	 * 把一张图片归位
+	 * 把一张已完成的图片放到url里
 	 */
     @RequestMapping("/viewDone/putPicture/{userId}/{projectId}/{pictureId}")  
     @ResponseBody  
-    public void getImage(HttpServletRequest request, HttpServletResponse response,@PathVariable("projectId")String projectId ,
+    public void getDoneImage(HttpServletRequest request, HttpServletResponse response,@PathVariable("projectId")String projectId ,
 			@PathVariable("userId")String userId,
 			@PathVariable("pictureId")String pictureId) throws Exception{  
     	
@@ -86,12 +90,75 @@ public class WorkSpaceController {
         // 获取输出流  
         OutputStream outputStream = response.getOutputStream();  
         // 读数据  
-        byte[] data = service.getPicture(pictureId);//从service获得
+        byte[] data = null; //service.getPicture(pictureId);//从service获得
         // 回写  
         response.setContentType(JPG);  
         outputStream.write(data);  
         outputStream.flush();  
         outputStream.close();  
     }  
+    
+     
+    
+    /**
+     * 随机获得一个待完成的图片的id
+     * @return 图片id
+     */
+    @RequestMapping("/getNewPictureId/{userId}/{projectId}")  
+    @ResponseBody  
+    public String getNewPictureId() {
+    	String id = "" ; //调用service的方法
+    	return id;
+    }
+    
+    
+    /**
+   	 * 把一张等待完成的图片放到url里
+   	 */
+     @RequestMapping("/getNewPicture/{userId}/{projectId}/{pictureId}")  
+     @ResponseBody  
+     public void getNewImage(HttpServletRequest request, HttpServletResponse response,@PathVariable("projectId")String projectId ,
+   			@PathVariable("userId")String userId,
+   			@PathVariable("pictureId")String pictureId) throws Exception{  
+       	
+       	String JPG="image/jpeg;charset=UTF-8";      
+           // 获取输出流  
+           OutputStream outputStream = response.getOutputStream();  
+           // 读数据  
+           byte[] data = null;// service.getPicture(pictureId);//从service获得
+           // 回写  
+           response.setContentType(JPG);  
+           outputStream.write(data);  
+           outputStream.flush();  
+           outputStream.close();  
+       }  
+     
+     
+     /**
+      * 提交标记
+      * @param request
+      * @param response
+      * @param type
+      * @param userId
+      * @param projectId
+      * @param pictureId
+      * @param remark  格式为
+      * content1;content2(结尾无分号,没有tag内容的 remark为空串)
+      */
+     @PostMapping("/submit/{type}/{userId}/{projectId}/{pictureId}")
+     public void submitTag(HttpServletRequest request, HttpServletResponse response,
+     		@PathVariable("type")String type,
+     		@PathVariable("userId")String userId,
+     		@PathVariable("projectId")String projectId,
+     		@PathVariable("pictureId")String pictureId) {
+    	 
+    	String imageDataURL = request.getParameter("b64");
+     	String remark = request.getParameter("remark");  //tag图片的64位编码
+     	String w = request.getParameter("width");
+     	String h = request.getParameter("height");
+     	int width = Integer.parseInt(w);
+     	int height = Integer.parseInt(h);//标记的长宽
+     	
+     }
 }
 
