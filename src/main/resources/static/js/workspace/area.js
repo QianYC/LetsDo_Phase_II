@@ -8,7 +8,3 @@ function setRequirement(){
 	$("#requirement").val(req);
 }
 
-function submit(){
-	//提交标记
-}
-

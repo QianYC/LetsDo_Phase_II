@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,14 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import YingYingMonster.LetsDo_Phase_II.service.Mock_WorkSpaceServiceImpl;
+import YingYingMonster.LetsDo_Phase_II.service.WorkerService;
 
 
 @Controller
 @RequestMapping("/workspace")
 public class WorkSpaceController {
 	
-	Mock_WorkSpaceServiceImpl service = new Mock_WorkSpaceServiceImpl();
+	@Autowired
+	private WorkerService service;
 	
 	/**
 	 * 
@@ -88,7 +90,7 @@ public class WorkSpaceController {
         // 获取输出流  
         OutputStream outputStream = response.getOutputStream();  
         // 读数据  
-        byte[] data = service.getPicture(pictureId);//从service获得
+        byte[] data = null; //service.getPicture(pictureId);//从service获得
         // 回写  
         response.setContentType(JPG);  
         outputStream.write(data);  
@@ -123,7 +125,7 @@ public class WorkSpaceController {
            // 获取输出流  
            OutputStream outputStream = response.getOutputStream();  
            // 读数据  
-           byte[] data = service.getPicture(pictureId);//从service获得
+           byte[] data = null;// service.getPicture(pictureId);//从service获得
            // 回写  
            response.setContentType(JPG);  
            outputStream.write(data);  
@@ -141,7 +143,7 @@ public class WorkSpaceController {
       * @param projectId
       * @param pictureId
       * @param remark  格式为
-      * name1:content1;name2:content2(结尾无分号,没有tag内容的 remark为空串)
+      * content1;content2(结尾无分号,没有tag内容的 remark为空串)
       */
      @PostMapping("/submit/{type}/{userId}/{projectId}/{pictureId}")
      public void submitTag(HttpServletRequest request, HttpServletResponse response,
