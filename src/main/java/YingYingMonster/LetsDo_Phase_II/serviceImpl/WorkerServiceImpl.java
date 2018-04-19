@@ -3,12 +3,10 @@ package YingYingMonster.LetsDo_Phase_II.serviceImpl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import YingYingMonster.LetsDo_Phase_II.daoImpl.DataDAOImpl;
-import YingYingMonster.LetsDo_Phase_II.daoImpl.ProjectDAOImpl;
+import YingYingMonster.LetsDo_Phase_II.dao.ProjectDAO;
+import YingYingMonster.LetsDo_Phase_II.dao.WorkerDAO;
 import YingYingMonster.LetsDo_Phase_II.model.Project;
 import YingYingMonster.LetsDo_Phase_II.model.Tag;
 import YingYingMonster.LetsDo_Phase_II.service.WorkerService;
@@ -17,10 +15,10 @@ import YingYingMonster.LetsDo_Phase_II.service.WorkerService;
 public class WorkerServiceImpl implements WorkerService {
 
 	@Autowired
-	ProjectDAOImpl pjDao;
+	ProjectDAO pjDao;
 	
 	@Autowired
-	DataDAOImpl dtDao;
+	WorkerDAO wkDao;
 	
 	@Override
 	public List<String> viewAllProjects() {
@@ -37,15 +35,29 @@ public class WorkerServiceImpl implements WorkerService {
 	}
 
 	@Override
-	public Project getAProject(String projectId) {
+	public Project getAProject(String publisherId,String projectId) {
 		// TODO Auto-generated method stub
-		return null;
+		Project pj=null;
+		try {
+			pj=pjDao.getAProject(publisherId, projectId);
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pj;
 	}
 
 	@Override
-	public boolean forkProject(String workerId, String projectId) {
+	public boolean forkProject(String workerId, String publisherId,String projectId) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean flag=false;
+		try {
+			flag=wkDao.fork(workerId, publisherId, projectId);
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return flag;
 	}
 
 	@Override
@@ -91,7 +103,7 @@ public class WorkerServiceImpl implements WorkerService {
 	}
 
 	@Override
-	public boolean push(String workerId, String projectId) {
+	public boolean push(String workerId, String publisherId,String projectId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
