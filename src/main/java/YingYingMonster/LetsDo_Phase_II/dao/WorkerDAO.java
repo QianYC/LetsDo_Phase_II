@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import YingYingMonster.LetsDo_Phase_II.model.Data;
 import YingYingMonster.LetsDo_Phase_II.model.Project;
 import YingYingMonster.LetsDo_Phase_II.model.Tag;
 
@@ -21,7 +22,7 @@ public interface WorkerDAO {
 
 	public List<String>viewDoneData(String workerId,String publisherId,String projectId);
 
-	public byte[]getAData(String workerId,String publisherId,String projectId,String dataId);
+	public Data getAData(String workerId,String publisherId,String projectId,String dataId) throws IOException;
 	
 	public boolean push(String workerId,String publisherId,String projectId);
 }
