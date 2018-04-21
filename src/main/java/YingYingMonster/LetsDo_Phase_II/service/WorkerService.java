@@ -28,6 +28,6 @@ public interface WorkerService {
 
 	public boolean uploadTag(String userId,String publisherId,String projectId,String tagId,Tag tag);
 
-	public boolean push(String workerId,String publisherId,String projectId);
+	public int push(String workerId,String publisherId,String projectId);
 	
 }

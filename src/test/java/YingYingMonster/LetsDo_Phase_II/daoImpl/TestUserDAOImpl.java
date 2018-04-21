@@ -98,8 +98,10 @@ public class TestUserDAOImpl {
 	public void findUsers() throws Exception{
 		setUp();
 		
-		List<User>list=userDao.findUsers("nam");
+		List<User>list=userDao.findUsers(null);
 		assertEquals("name1",list.get(0).getName());
+		assertEquals(true,list.get(0)instanceof Publisher);
+		assertEquals(false,list.get(0)instanceof Worker);
 		tearDown();
 	}
 	

@@ -24,5 +24,15 @@ public interface WorkerDAO {
 
 	public Data getAData(String workerId,String publisherId,String projectId,String dataId) throws IOException;
 	
-	public boolean push(String workerId,String publisherId,String projectId);
+	/**
+	 * 返回被采纳的Tag数量
+	 * @param workerId
+	 * @param publisherId
+	 * @param projectId
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
+	public int push(String workerId,String publisherId,String projectId) throws FileNotFoundException, ClassNotFoundException, IOException;
 }

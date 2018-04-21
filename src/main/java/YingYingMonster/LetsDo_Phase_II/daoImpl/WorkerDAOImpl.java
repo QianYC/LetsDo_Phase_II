@@ -200,6 +200,13 @@ public class WorkerDAOImpl implements WorkerDAO {
 		return data;
 	}
 
+	/**
+	 * 获得worker分得的包名
+	 * @param wkId
+	 * @param pubId
+	 * @param pjId
+	 * @return
+	 */
 	private String pkgId(String wkId,String pubId,String pjId){
 		File wkfd=new File(root+"/workers/"+wkId);
 		Iterator<String>it=Stream.of(wkfd.list())
@@ -213,10 +220,29 @@ public class WorkerDAOImpl implements WorkerDAO {
 	}
 	
 	@Override
-	public boolean push(String workerId, String publisherId, String projectId) {
+	public int push(String workerId, String publisherId, String projectId) throws FileNotFoundException, ClassNotFoundException, IOException {
 		// TODO Auto-generated method stub
+		File wkfd=new File(root+"/workers/"+workerId);
+		Iterator<String>it=Stream.of(wkfd.list())
+				.filter(x->x.substring(0,x.lastIndexOf("_")).equals(publisherId+"_"+projectId))
+				.iterator();
+		if(!it.hasNext())
+			return -1;
 		
-		return false;
+		int count=0;
+		
+		Project pj=(Project) db.retrieve("projects", publisherId+"_"+projectId);
+		
+		File pkg=new File(root+"/workers/"+workerId+"/"+it.next());
+		
+		String[]tags=pkg.list();
+		for(String str:tags){
+			Tag tag=(Tag)serialize.readObj(pkg.getPath()+"/"+str);
+			//比较tag是否符合要求，若符合要求，才push
+		}
+
+		
+		return count;
 	}
 
 }

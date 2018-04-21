@@ -127,6 +127,13 @@ public class WorkerServiceImpl implements WorkerService {
 	public boolean uploadTag(String userId, String publisherId,String projectId, String tagId, Tag tag) {
 		// TODO Auto-generated method stub
 		boolean flag=false;
+		
+		/**
+		 * 对tag进行打分
+		 * 目前暂时随机生成
+		 */
+		tag.setScore((int)(Math.random()*100));
+		
 		try {
 			flag=wkDao.uploadTag(userId, publisherId, projectId, tagId, tag);
 		} catch (IOException e) {
@@ -137,10 +144,15 @@ public class WorkerServiceImpl implements WorkerService {
 	}
 
 	@Override
-	public boolean push(String workerId, String publisherId,String projectId) {
+	public int push(String workerId, String publisherId,String projectId) {
 		// TODO Auto-generated method stub
-		boolean flag=false;
-		flag=wkDao.push(workerId, publisherId, projectId);
+		int flag=0;
+		try {
+			flag=wkDao.push(workerId, publisherId, projectId);
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return flag;
 	}
 

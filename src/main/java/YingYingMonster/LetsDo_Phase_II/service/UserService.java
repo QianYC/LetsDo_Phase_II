@@ -18,6 +18,7 @@ public interface UserService {
 	
 	/**
 	 * 根据用户昵称搜索用户，支持模糊查询
+	 * name=null,返回所有用户
 	 * @param name
 	 * @return
 	 */

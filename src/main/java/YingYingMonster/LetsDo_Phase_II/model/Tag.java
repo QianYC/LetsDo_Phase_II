@@ -13,9 +13,15 @@ public class Tag implements Serializable {
 	private Map<String,String>attributes;
 	private byte[]data;
 	private int width,height;
+	private int score;
 	
 	
-	
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
 	public Tag() {
 		super();
 	}

@@ -56,7 +56,7 @@ public class UserDAOImpl implements UserDAO {
 		
 		List<User>res=new ArrayList<>();
 		for(Persistent p:list){
-			if(((User)p).getName().contains(name))
+			if(name==null||((User)p).getName().contains(name))
 				res.add((User) p);
 		}
 		return res;
