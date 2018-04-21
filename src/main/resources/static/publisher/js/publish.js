@@ -1,6 +1,5 @@
 window.onload=function () {
-    document.getElementById("username").innerHTML=getCookie("username");
-
+    document.getElementById("username").innerHTML=getCookie("username")+"&nbsp;";
 }
 
 function uploadDataSet() {
@@ -13,9 +12,10 @@ function uploadDataSet() {
     var startDate=$("#startDate").innerText;
     var endDate=$("#endDate").innerText;
     var tags=$("#tags").innerText;
-    var tagMode=$("#markMode").innerText;
-    var tagRequirement=tagMode+"***"+tags;
-    var workerRequirement=$("#note").innerText;
+    var markMode=$("#markMode").innerText;
+    var tagRequirement=$("#note").innerText;
+    var levelLimit=$("#levelLimit").innerText;
+    var gradesLimit=$("#gradesLimit").innerText;
     var money=$("#payment").innerText;
 
     var formData = new FormData();
@@ -27,8 +27,11 @@ function uploadDataSet() {
     formData.append("picNum",picNum);
     formData.append("startDate",startDate);
     formData.append("endDate",endDate);
+    formData.append("tags",tags);
+    formData.append("markMode",markMode);
     formData.append("tagRequirement",tagRequirement);
-    formData.append("workerRequirement",workerRequirement);
+    formData.append("levelLimit",levelLimit);
+    formData.append("gradesLimit",gradesLimit);
     formData.append("money",money);
 
     $.ajax({
