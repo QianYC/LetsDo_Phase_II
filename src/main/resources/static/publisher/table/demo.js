@@ -55,14 +55,25 @@ $(function(){
         }
     });
 
+    $('#levelLimit').editable({
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
+        }
+    });
+
+    $('#gradesLimit').editable({
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
+        }
+    });
+
     $('#markMode').editable({
         prepend: "not selected",
         source: [
-            {value: 1, text: '1'},
-            {value: 2, text: '2'},
-            {value: 3, text: '3'},
-            {value: 4, text: '4'},
-            {value: 5, text: '5'},
+            {value: 1, text: 'entirety'},
+            {value: 2, text: 'tags'},
+            {value: 3, text: 'rectangle'},
+            {value: 4, text: 'area'}
         ],
         display: function(value, sourceData) {
             var colors = {"": "gray", 1: "green", 2: "blue",3: "navy", 4: "orange",5: "pink"},

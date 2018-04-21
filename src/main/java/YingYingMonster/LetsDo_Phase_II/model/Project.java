@@ -10,15 +10,15 @@ public class Project implements Persistent{
 	
 	private String startDate,endDate;//yyyy-MM-dd
 	
-	private String tagRequirement,workerRequirement;
+	private TagRequirement tagRequirement;
+	private WorkerRequirement workerRequirement;
 	
 	private int money;//任务赏金
 
 	public Project(){}
 
 	public Project(String publisherId, String projectId, int maxWorkerNum, int packageNum,
-				   int picNum, String startDate, String endDate,
-				   String tagRequirement, String workerRequirement, int money) {
+				   int picNum, String startDate, String endDate, TagRequirement tagRequirement, WorkerRequirement workerRequirement, int money) {
 		this.publisherId = publisherId;
 		this.projectId = projectId;
 		this.maxWorkerNum = maxWorkerNum;
@@ -106,22 +106,6 @@ public class Project implements Persistent{
 		this.endDate = endDate;
 	}
 
-	public String getTagRequirement() {
-		return tagRequirement;
-	}
-
-	public void setTagRequirement(String tagRequirement) {
-		this.tagRequirement = tagRequirement;
-	}
-
-	public String getWorkerRequirement() {
-		return workerRequirement;
-	}
-
-	public void setWorkerRequirement(String workerRequirement) {
-		this.workerRequirement = workerRequirement;
-	}
-
 	public int getMoney() {
 		return money;
 	}
@@ -142,5 +126,21 @@ public class Project implements Persistent{
 	
 	public int getPicNum(){
 		return picNum;
+	}
+
+	public TagRequirement getTagRequirement() {
+		return tagRequirement;
+	}
+
+	public void setTagRequirement(TagRequirement tagRequirement) {
+		this.tagRequirement = tagRequirement;
+	}
+
+	public WorkerRequirement getWorkerRequirement() {
+		return workerRequirement;
+	}
+
+	public void setWorkerRequirement(WorkerRequirement workerRequirement) {
+		this.workerRequirement = workerRequirement;
 	}
 }

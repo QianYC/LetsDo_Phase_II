@@ -414,6 +414,14 @@
                                             <td><a href="#" id="workerNum" data-type="select" data-pk="1" data-value="" data-title="Select max worker amount for each package"></a></td>
                                         </tr>
                                         <tr>
+                                            <td>Worker Lower Level Limit</td>
+                                            <td><a href="#" id="levelLimit" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="The lowest level of workers you can accept or you require"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Result Lower Grades Limit</td>
+                                            <td><a href="#" id="gradesLimit" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="The lowest grade of the results you can accept or you require 0~100"></a></td>
+                                        </tr>
+                                        <tr>
                                             <td>The Start Time</td>
                                             <td><a href="#" id="startDate" data-type="combodate" data-value="2012-12-21" data-format="YYYY-MM-DD" data-viewformat="YYYY/MM/DD" data-template="D / MMM / YYYY" data-pk="1"  data-title="When do you want your project to start?"></a></td>
                                         </tr>
@@ -427,16 +435,16 @@
                                         </tr>
 
                                         <tr>
-                                            <td>Tag Requirement</td>
+                                            <td>Tags</td>
                                             <td><a href="#" id="tags" data-type="select2" data-pk="1" data-title="Enter tags">tag1,tag2</a></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Worker Requirement<a href="#" id="pencil"><i class="icon-pencil" style="padding-right: 5px"></i>[edit]</a></td>
+                                            <td>Tag Requirement<a href="#" id="pencil"><i class="icon-pencil" style="padding-right: 5px"></i>[edit]</a></td>
                                             <td>
                                                 <div id="note" data-pk="1" data-type="wysihtml5" data-toggle="manual" data-title="Enter notes" data-placement="top">
-                                                    <h3>Worker Requirement</h3>
-                                                    Worker Requirement means <i>Details</i> you want workers to pay attention to.<br>
+                                                    <h3>Tag Requirement</h3>
+                                                    Tag Requirement means <i>Details</i> you want workers to pay attention to.<br>
                                                     Including but not limited to:
                                                     <ul>
                                                         <li>1.</li>
@@ -456,8 +464,8 @@
                 <div class="row">
                     <div class="col-md-10">
                     </div>
-                    <div class="col-md-2" style="padding: 20px 0px 0px 0px">
-                        <button id="confirm" type="button" class="btn btn-outline-success btn-lg">
+                    <div class="col-md-2" style="padding: 20px 0 0 0">
+                        <button id="confirm" type="button" onclick="uploadDataSet()" class="btn btn-outline-success btn-lg">
                             Confirm
                         </button>
                     </div>

@@ -1,6 +1,9 @@
 package YingYingMonster.LetsDo_Phase_II.controller;
 
+import YingYingMonster.LetsDo_Phase_II.model.MarkMode;
 import YingYingMonster.LetsDo_Phase_II.model.Project;
+import YingYingMonster.LetsDo_Phase_II.model.TagRequirement;
+import YingYingMonster.LetsDo_Phase_II.model.WorkerRequirement;
 import YingYingMonster.LetsDo_Phase_II.service.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/publisher")
+@RequestMapping("/publisherPage")
 public class PublisherController {
 
     @Autowired
@@ -24,17 +27,32 @@ public class PublisherController {
     @PostMapping("/publish")
     @ResponseBody
     public String createProject(@RequestParam("dataSet")MultipartFile dataSet,
-                              @RequestParam ("userId") String publisherId,
-                              @RequestParam("projectId")String projectId,
-                              @RequestParam("maxWorkerNum")int maxWorkerNum,
-                              @RequestParam("packageSize")int packageSize,
-                              @RequestParam("picNum")int picNum,
-                              @RequestParam("startDate")String startDate,
-                              @RequestParam("endDate")String endDate,
-                              @RequestParam("tagRequirement")String tagRequirement,
-                              @RequestParam("workerRequirement")String workerRequirement,
-                              @RequestParam("money")int money){
-        Project project=new Project(publisherId,projectId,maxWorkerNum,packageSize,picNum,startDate,endDate,tagRequirement,workerRequirement,money);
+                                @RequestParam ("userId") String publisherId,
+                                @RequestParam("projectId")String projectId,
+                                @RequestParam("maxWorkerNum")int maxWorkerNum,
+                                @RequestParam("packageSize")int packageSize,
+                                @RequestParam("picNum")int picNum,
+                                @RequestParam("startDate")String startDate,
+                                @RequestParam("endDate")String endDate,
+                                @RequestParam("tags")String tags,
+                                @RequestParam("markMode")String markMode,
+                                @RequestParam("tagRequirement")String tagRequirement,
+                                @RequestParam("levelLimit")String levelLimit,
+                                @RequestParam("gradesLimit")String gradeLimit,
+                                @RequestParam("workerRequirement")String workerRequirement,
+                                @RequestParam("money")int money){
+        TagRequirement tagRequire=null;
+        if(markMode.equals("tags")) {
+            tagRequire=new TagRequirement(MarkMode.TAGS,tags,Integer.parseInt(gradeLimit));
+        }else if(markMode.equals("entirety")){
+            tagRequire=new TagRequirement(MarkMode.ENTIRETY,tagRequirement,Integer.parseInt(gradeLimit));
+        }else if(markMode.equals("rectangle")){
+            tagRequire=new TagRequirement(MarkMode.RECTANGLE,tagRequirement,Integer.parseInt(gradeLimit));
+        }else if(markMode.equals("area")){
+            tagRequire=new TagRequirement(MarkMode.AREA,tagRequirement,Integer.parseInt(gradeLimit));
+        }
+        WorkerRequirement workerRequire=new WorkerRequirement(Integer.parseInt(levelLimit));
+        Project project=new Project(publisherId,projectId,maxWorkerNum,packageSize,picNum,startDate,endDate,tagRequire,workerRequire,money);
 
         boolean isValid=publisherService.validateProject(publisherId,projectId);
         if(isValid){
