@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import YingYingMonster.LetsDo_Phase_II.dao.MockDB;
 import YingYingMonster.LetsDo_Phase_II.daoImpl.CSVHandler;
@@ -82,6 +83,7 @@ public class Initializer {
 			System.out.println("running batch");
 			executeBatch(batch);
 		}
+		
 	}
 	
 	private void executeBatch(File batch){

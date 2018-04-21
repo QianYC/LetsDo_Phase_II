@@ -36,7 +36,7 @@ public class PublisherController {
 
         boolean isValid=publisherService.validateProject(publisherId,projectId);
         if(isValid){
-            boolean success=publisherService.creatProject(project,dataSet);
+            boolean success=publisherService.createProject(project,dataSet);
             if(success){
                 return "success";
             }else{
