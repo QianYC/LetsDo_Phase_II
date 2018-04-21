@@ -55,36 +55,31 @@ Mark.prototype.init = function(){//初始化
 			self.type = "pencil";
 			$("#pencil").css("border-style","inset");
 			$("#pencil").css("border-width","medium");
-			 $("#pencilSize").show();
-			$("#rubberSize").hide();
+			
 		}
 		else if(event.target.id === "line"){
 			self.type = "line";
 			$("#line").css("border-style","inset");
 			$("#line").css("border-width","medium");
-			 $("#pencilSize").show();
-			$("#rubberSize").hide();
+			
 		}
 		else if(event.target.id === "square"){
 			self.type = "square";
 			$("#square").css("border-style","inset");
 			$("#square").css("border-width","medium");
-			 $("#pencilSize").show();
-			$("#rubberSize").hide();
+			
 		}
 		else if(event.target.id === "circle"){
 			self.type = "circle";
 			$("#circle").css("border-style","inset");
 			$("#circle").css("border-width","medium");
-			 $("#pencilSize").show();
-			$("#rubberSize").hide();
+		
 		}
 		else if(event.target.id === "rubber"){
 			self.type = "rubber";
 			$("#rubber").css("border-style","inset");
 			$("#rubber").css("border-width","medium");
-			$("#rubberSize").show();
-			 $("#pencilSize").hide();
+			
 		}
 	}, false);
 	

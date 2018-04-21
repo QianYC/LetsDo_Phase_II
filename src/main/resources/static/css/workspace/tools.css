@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .tools {
-    width:40px;
+    width:120px;
     height:40px;
 	transition-duration: 0.2s;
 	-webkit-transition-duration: 0.2s;
@@ -19,13 +19,14 @@
 	background-color:#E8D26D;
 }
 
-.pencilSize{
-	width: 80px;
+#pencilSize{
+	width: 120px;
 	color: #121010
 }
 
-.rubberSize{
-	width: 80px;color: #121010
+#rubberSize{
+	width: 120px;
+	color: #121010
 }
 
 
