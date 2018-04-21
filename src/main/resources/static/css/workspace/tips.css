@@ -2,11 +2,10 @@
 
 html { overflow-x: hidden; overflow-y: auto; } 
 
-
 #drawingPenal {
 	 	position:relative;
-	 	left: 100px;
-	 	top: -410px;
+	 	left: 0px;
+	 	top: -530px;
         width: 800px;
         height: 530px;
 	 	background-color: #FFFFFF;
@@ -17,46 +16,12 @@ html { overflow-x: hidden; overflow-y: auto; }
 	   	border-width: medium;
     }
     
-#requirementArea{
-	position:relative;
-	 	left: 100px;
-	 	top: -990px;
-}
-
-#requirement{
-	width: 250px;
-	background-color:rgba(0,0,0,0.00);
-	border: hidden;
-	font-size: 25px;
-	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-}
-
-
-#tools {
-		position:relative;
-	 	left: 950px;
-	 	top: 100px;
-	 	width: 200px;
-	    height: 500px;
-}
-
-#toBeDone{
-	position:relative;
-	 	left: 50px;
-	 	top:  -950px;
-	width: 150px;
-	height: 500px;
-	border: #19EF67;
-	overflow: scroll;
-	
-}
-
 
 #submit{
 	
 	position:relative;
 	 	left: 950px;
-	 	top: -500px;
+	 	top: -510px;
 	 	width: 35px;
 	    height: 35px;
 	    transition:  0.1s;
@@ -70,15 +35,27 @@ html { overflow-x: hidden; overflow-y: auto; }
 	 transform: scale(0.3);
 	 position:relative;
 	 	left: 1030px;
-	 	top: -540px;
+	 	top: -600px;
 }
 
 #submitHover{
 	position:relative;
 	 	left: 950px;
-	 	top: -500px;
+	 	top: -510px;
 	 	width: 35px;
 	    height: 35px;
+}
+
+
+#tipInput{
+	position:relative;
+	left:820px;
+	top:0px;
+	border-style: inset;
+	border-color:rgba(41,157,165,0.38);
+    height: 530px;
+    width:350px;
+	background-color: aliceblue;
 }
 
 .demo{
@@ -87,8 +64,8 @@ html { overflow-x: hidden; overflow-y: auto; }
 		  }
 		  .progress{
 		      position: relative;
-		      top: -445px;
-		      left: 200px;
+		      top: -510px;
+		      left: 100px;
 		      width: 600px;
 			  height: 10px;
 			  background: #313131;
