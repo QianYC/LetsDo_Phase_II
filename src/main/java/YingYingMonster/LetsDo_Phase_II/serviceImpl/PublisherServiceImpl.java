@@ -26,12 +26,6 @@ public class PublisherServiceImpl implements PublisherService {
 	@Override
 	public boolean createProject(Project project, MultipartFile dataSet) {
 		// TODO Autproject.go-generated method stub
-		try {
-			pjDao.addProject(project);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		byte[] bytes = null;
 		try {
 			bytes = dataSet.getBytes();
@@ -39,14 +33,24 @@ public class PublisherServiceImpl implements PublisherService {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		int num=0;
 		try {
-			dtDao.uploadDataSet(project.getPublisherId(), project.getProjectId(),
+			num=dtDao.uploadDataSet(project.getPublisherId(), project.getProjectId(),
 					project.getPackageNum(), bytes);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return false;
+		if(num<=0)
+			return false;
+		project.setPicNum(num);
+		try {
+			pjDao.addProject(project);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override
