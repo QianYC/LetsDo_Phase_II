@@ -4,7 +4,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -56,9 +55,9 @@ public class DataDAOImpl implements DataDAO{
 //    }
 
 	@Override
-	public int uploadDataSet(String publisherId, String dataSetId, int packSize,byte[] dataSet) throws IOException {
+	public int uploadDataSet(String publisherId, String dataSetId, int packNum,byte[] dataSet) throws IOException {
 		// TODO 自动生成的方法存根
-        if(packSize<=0)
+        if(packNum<=0)
         	return -1;
         
 		BufferedOutputStream bos=null;
@@ -139,10 +138,10 @@ public class DataDAOImpl implements DataDAO{
 			}	
         });
         
-        for(int i=1;i<=Math.ceil(picNum/1.0);i++){
+        for(int i=1;i<=packNum;i++){
         	File pac=new File(ROOT+"/dataSet/"+publisherId+"_"+dataSetId+"/pac"+i);
         	pac.mkdirs();
-        	for(int j=0;j<1;j++){
+        	for(int j=0;j<Math.ceil(picNum/packNum);j++){
         		File f=new File(pac.getPath()+"/"+files[index].getName());
         		files[index].renameTo(f);
         		index++;
@@ -183,14 +182,14 @@ public class DataDAOImpl implements DataDAO{
         fileSet.setProject(prj);
         if(tagsSrc.isDirectory()) { //是目录
             fileSet.setDir(tagsSrc);
-            fileSet.setIncludes("*.tag"); //包括哪些文件或文件夹 eg:zip.setIncludes("*.java");
+            fileSet.setIncludes("*.tag"); //包括tag文件
         } else {
             fileSet.setFile(tagsSrc);
         }
         Zip zip = new Zip();
         zip.setProject(prj);
         zip.setDestFile(tagsDes);
-        zip.setEncoding("gbk"); //以gbk编码进行压缩，注意windows是默认以gbk编码进行压缩的
+        zip.setEncoding("gbk"); //以gbk编码进行压缩
         zip.addFileset(fileSet);
         zip.execute();
         
