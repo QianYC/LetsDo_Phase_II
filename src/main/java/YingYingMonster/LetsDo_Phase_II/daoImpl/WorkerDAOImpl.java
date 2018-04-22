@@ -179,15 +179,20 @@ public class WorkerDAOImpl implements WorkerDAO {
 		String pkgId=pkgId(workerId, publisherId, projectId);
 		Data data=new Data();
 		
+		File pkg=new File(root+"/dataSet/"+publisherId+"_"+projectId+"/"+pkgId);
+		//找到对应的data文件名
+		String dtid=Stream.of(pkg.list()).filter(x->x.split("\\.")[0].equals(dataId))
+				.collect(Collectors.toList()).get(0);
+//		System.out.println(root+"/dataSet/"+publisherId+"_"+projectId+"/"+pkgId+"/"+dtid);
 		//获得图片尺寸
 		BufferedImage bi=ImageIO.read(
-				new File(root+"/dataSet/"+publisherId+"_"+projectId+"/"+pkgId));
+				new File(pkg.getPath()+"/"+dtid));
 		data.setWidth(bi.getWidth());
 		data.setHeight(bi.getHeight());
 		
 		//获得byte数组
 		FileImageInputStream fiis=new FileImageInputStream(
-				new File(root+"/dataSet/"+publisherId+"_"+projectId+"/"+pkgId));
+				new File(pkg.getPath()+"/"+dtid));
 		ByteArrayOutputStream baos=new ByteArrayOutputStream();
 		int btnum=0;
 		byte[]buf=new byte[1024];
