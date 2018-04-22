@@ -13,7 +13,7 @@ function uploadDataSet() {
     var endDate=$("#endDate").text();
     var tags=$("#tags").text();
     var markMode=$("#markMode").text();
-    var tagRequirement=$("#note").text();
+    var tagRequirement=$("#note").html();
     var levelLimit=$("#levelLimit").text();
     var gradesLimit=$("#gradesLimit").text();
     var money=$("#payment").text();
