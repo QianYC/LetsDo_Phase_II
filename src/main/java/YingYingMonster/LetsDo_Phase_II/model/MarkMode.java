@@ -1,5 +1,7 @@
 package YingYingMonster.LetsDo_Phase_II.model;
 
-public enum MarkMode {
+import java.io.Serializable;
+
+public enum MarkMode implements Serializable {
     ENTIRETY,TAGS,RECTANGLE,AREA
 }

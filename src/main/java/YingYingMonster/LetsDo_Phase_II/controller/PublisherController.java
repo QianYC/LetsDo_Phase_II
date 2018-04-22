@@ -26,12 +26,12 @@ public class PublisherController {
     //请求发布项目
     @PostMapping("/publish")
     @ResponseBody
-    public String createProject(@RequestParam("dataSet")MultipartFile dataSet,
+    public String createProject(@RequestParam(value = "file")MultipartFile dataSet,
                                 @RequestParam ("userId") String publisherId,
                                 @RequestParam("projectId")String projectId,
-                                @RequestParam("maxWorkerNum")int maxWorkerNum,
-                                @RequestParam("packageSize")int packageSize,
-                                @RequestParam("picNum")int picNum,
+                                @RequestParam("maxWorkerNum")String maxWorkerNum,
+                                @RequestParam("packageNum")String packageNum,
+                                @RequestParam("picNum")String picNum,
                                 @RequestParam("startDate")String startDate,
                                 @RequestParam("endDate")String endDate,
                                 @RequestParam("tags")String tags,
@@ -39,8 +39,8 @@ public class PublisherController {
                                 @RequestParam("tagRequirement")String tagRequirement,
                                 @RequestParam("levelLimit")String levelLimit,
                                 @RequestParam("gradesLimit")String gradeLimit,
-                                @RequestParam("workerRequirement")String workerRequirement,
-                                @RequestParam("money")int money){
+                                @RequestParam("money")String money){
+        System.out.println("进入了方法");
         TagRequirement tagRequire=null;
         if(markMode.equals("tags")) {
             tagRequire=new TagRequirement(MarkMode.TAGS,tags,Integer.parseInt(gradeLimit));
@@ -52,7 +52,11 @@ public class PublisherController {
             tagRequire=new TagRequirement(MarkMode.AREA,tagRequirement,Integer.parseInt(gradeLimit));
         }
         WorkerRequirement workerRequire=new WorkerRequirement(Integer.parseInt(levelLimit));
-        Project project=new Project(publisherId,projectId,maxWorkerNum,packageSize,picNum,startDate,endDate,tagRequire,workerRequire,money);
+        int workerNum=Integer.parseInt(maxWorkerNum);
+        int numPackage=Integer.parseInt(packageNum);
+        int numPic=Integer.parseInt(picNum);
+        int payment=Integer.parseInt(money);
+        Project project=new Project(publisherId,projectId,workerNum,numPackage,numPic,startDate,endDate,tagRequire,workerRequire,payment);
 
         boolean isValid=publisherService.validateProject(publisherId,projectId);
         if(isValid){
