@@ -25,8 +25,8 @@ function getNewPicture_(pictureId){
 		$.ajax({
 			url: "/workspace/getNewPicture/"+userId+"/"+projectId+"/"+publisherId+"/"+pictureId,
 			type:"get",
-			success: function(){
-				//alert(data);
+			success: function(data){
+				
 				var url = "/workspace/getNewPicture/"+userId+"/"+projectId+"/"+publisherId+"/"+pictureId;
 				setCssBackground(url);
 			}
