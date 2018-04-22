@@ -98,7 +98,7 @@ public class DataDAOImpl implements DataDAO{
         for(Enumeration<ZipEntry> enumeration = zipFile.getEntries();enumeration.hasMoreElements();){  
             ZipEntry zipEntry = enumeration.nextElement();//获取元素  
             //排除空文件夹  
-            if(!zipEntry.getName().endsWith(File.separator)){  
+            if(zipEntry.getName().endsWith(".png")||zipEntry.getName().endsWith(".jpg")){  
                 System.out.println("正在解压文件:"+zipEntry.getName());//打印输出信息  
             	picNum++;
                 OutputStream os = new FileOutputStream(new File(outPath+zipEntry.getName()));//创建解压后的文件  
