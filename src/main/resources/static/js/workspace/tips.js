@@ -2,11 +2,12 @@
  * 为打标签标注提供逻辑
  */
 
+
+
 function setInput(){
 	//加载图片时调用
 	//设置标签输入框
-	var tips = "tip1,tip2,tip3,tip4,tip5";//调用方法获得;cookie中也有,用，分割；cookie会截断；
-    setCookie("tipList", tips);
+	var tips = getCookie("tipList");//调用方法获得;cookie中也有,用，分割；cookie会截断；
 	var list = tips.split(",");
 	var len = list.length;
 	var id = "";
@@ -24,15 +25,10 @@ function setInput(){
 	}
 }
 
-function testgetUserTips(){
-	var res = getUserTips();
-	alert(res);
-}
 
 function getUserTips(){
 	//获得用户的输入
-	//若有一个或多个空未填返回空串""
-	//只记用户的输入，以逗号 ， 隔开
+	//name1:content1,name2:content2
 	var tips = getCookie("tipList");
 	var list = tips.split(",");
 	var len = list.length;
@@ -44,7 +40,7 @@ function getUserTips(){
 			return "";
 		}
 		else{
-			result = result+content;
+			result = result+list[i]+":"+content;
 			if(i!==len-1){
 				result = result + ",";
 			}
@@ -64,3 +60,49 @@ function addStyle(id){
 		}
 	})
 }
+
+function submitTag(){
+	//提交标记
+	//这种标记只有标签，没有图片
+	var type = "tips";
+	var userId = getCookie("userId");
+	var projectId = getCookie("projectId");
+	var publisherId = getCookie("publisherId");
+	var pictureId = getCookie("pictureId");
+	var remark = getUserTips();
+	var width = getCookie("pictureWidth");
+	var height = getCookie("pictureHeight");
+	
+	if(remark===""){
+		//有未填写的tip
+		//可以用别的方式提醒
+		//暂时使用alert
+		alert("请填写所有标签后提交！");
+		return;
+	}
+	
+	$.ajax({
+		url: "/workspace/submit/"+type+"/"+userId+"/"+projectId+"/"+publisherId+"/"+pictureId,
+		type: "post",
+		data: {
+			'base64' : "",
+			'remark' : remark,
+			'width' : width,
+			'height' : height,
+		},
+		success: function(){
+			alert("上传成功");
+			clearTips();//清空tips
+			getNewPicture();//这个方法在getPicture.js里面
+		}
+	});
+	
+}
+
+function clearTips(){
+	//清空tip的内容
+	//为下一张图片做准备
+	$("#tipInput").empty();
+	setInput();
+}
+

@@ -82,7 +82,7 @@ public class WorkerServiceImpl implements WorkerService {
 		// TODO Auto-generated method stub
 		int s1=viewUndoData(workerId, publisherId, projectId).size();
 		int s2=viewDoneData(workerId, publisherId, projectId).size();
-		return (int)(s2/(s1+s2)*100);
+		return (int) ((s2+0.0)/(s1+s2+0.0)*100);
 	}
 
 	@Override
