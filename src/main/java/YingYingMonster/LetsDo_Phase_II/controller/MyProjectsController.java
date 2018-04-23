@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import YingYingMonster.LetsDo_Phase_II.model.Project;
+import YingYingMonster.LetsDo_Phase_II.model.TagRequirement;
+import YingYingMonster.LetsDo_Phase_II.model.MarkMode;
 import YingYingMonster.LetsDo_Phase_II.service.WorkerService;
 
 @Controller
@@ -48,5 +51,34 @@ public class MyProjectsController {
     	}
     	System.out.println("getList "+res);
     	return res;
+    }
+    
+    @GetMapping("/getProject/{publisherId}/{projectId}")
+    @ResponseBody
+    public String getProject(@PathVariable("publisherId")String publisherId,
+    		@PathVariable("projectId")String projectId) {
+    	
+    	String res = "";
+        Project project = service.getAProject(publisherId, projectId);
+        TagRequirement requirement = project.getTagRequirement();
+        String type = "";
+        switch(requirement.getMarkMode()) {
+        case ENTIRETY:
+        	type="total";
+        	break;
+        case TAGS:
+        	type="tips";
+        	break;
+        case AREA:
+        	type="area";
+        	break;
+        case RECTANGLE:
+        	type="mark";
+        	break;
+        }
+        
+        String req = requirement.getRequirement(); /*markMode是tags的时候，requirement为tag列表，tag之间以逗号隔开，其他模式都为具体要求*/
+        
+    	return type+":"+req ;
     }
 }

@@ -13,9 +13,9 @@ function getNewPicture(){
 function getNewPicture_(pictureId){
 	//拿到图片
 	//1.拿到一张图片的id
-	var userId = getCookie("userId")||"wk1";
-	var projectId =getCookie("projectId")||"pjid";
-	var publisherId = getCookie("publisherId")||"pubid"
+	var userId = getCookie("userId");
+	var projectId =getCookie("projectId");
+	var publisherId = getCookie("publisherId");
 	if(pictureId === ""){
 			//没有图片或发生异常
 			alert("已完成所有图片！");
@@ -37,9 +37,9 @@ function getNewPicture_(pictureId){
 
 function getPictureSize(pictureId){
 	//获得图片的长宽属性，设置cookie
-	var userId = getCookie("userId")||"wk1";
-	var projectId =getCookie("projectId")||"pjid";
-	var publisherId = getCookie("publisherId")||"pubid"
+	var userId = getCookie("userId");
+	var projectId =getCookie("projectId");
+	var publisherId = getCookie("publisherId");
 	$.ajax({
 			url: "/workspace/getNewPictureSize/"+userId+"/"+projectId+"/"+publisherId+"/"+pictureId,
 			type:"get",
@@ -58,9 +58,9 @@ function getPictureSize(pictureId){
 
 function getNewPictureId(){
 	//得到一个picture的id
-	var userId = getCookie("userId")||"wk1";
-	var projectId ="pjid";// getCookie("projectId")||"pjid";
-	var publisherId = getCookie("publisherId")||"pubid";
+	var userId = getCookie("userId");
+	var projectId =getCookie("projectId");
+	var publisherId = getCookie("publisherId");
 //	alert(userId+" "+projectId+" "+publisherId);
 	var id = "";
 	$.ajax({
