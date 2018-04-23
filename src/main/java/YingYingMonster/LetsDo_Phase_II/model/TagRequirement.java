@@ -1,6 +1,8 @@
 package YingYingMonster.LetsDo_Phase_II.model;
 
-public class TagRequirement {
+import java.io.Serializable;
+
+public class TagRequirement implements Serializable {
     private MarkMode markMode;
     /*markMode是tags的时候，requirement为tag列表，tag之间以逗号隔开，其他模式都为具体要求*/
     private String requirement;

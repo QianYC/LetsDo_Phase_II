@@ -23,41 +23,41 @@ public class TestDataDAOImpl {
 	@Autowired
 	DataDAO dataDAOImpl;
 	
-//	@Test
-//	public void testUploadDataSet(){
-//		byte[] dataSet=null;
-//		ByteArrayOutputStream bos=null;  
-//		BufferedInputStream in=null;  
-//		File des=new File("C:/Users/TF/Desktop/文件/中文test.zip");
-//		try{   
-//			bos=new ByteArrayOutputStream((int)des.length());  
-//			in=new BufferedInputStream(new FileInputStream(des));  
-//			int buf_size=1024;  
-//			byte[] buffer=new byte[buf_size];  
-//			int len=0;  
-//			while(-1 != (len=in.read(buffer,0,buf_size))){  
-//				bos.write(buffer,0,len);  
-//			}  
-//			dataSet=bos.toByteArray();
-//			assertEquals(true,dataDAOImpl.uploadDataSet("11111", "中文test", dataSet));
-//		}
-//		catch(Exception e){  
-//			e.printStackTrace();   
-//		}  
-//		finally{  
-//			try{  
-//				if(in!=null){  
-//					in.close();  
-//				}  
-//				if(bos!=null){  
-//					bos.close();  
-//				}  
-//			}  
-//			catch(Exception e){   
-//				e.printStackTrace();    
-//			}  
-//		}
-//	}
+	@Test
+	public void testUploadDataSet(){
+		byte[] dataSet=null;
+		ByteArrayOutputStream bos=null;  
+		BufferedInputStream in=null;  
+		File des=new File("C:/Users/TF/Desktop/文件/中文test.zip");
+		try{   
+			bos=new ByteArrayOutputStream((int)des.length());  
+			in=new BufferedInputStream(new FileInputStream(des));  
+			int buf_size=1024;  
+			byte[] buffer=new byte[buf_size];  
+			int len=0;  
+			while(-1 != (len=in.read(buffer,0,buf_size))){  
+				bos.write(buffer,0,len);  
+			}  
+			dataSet=bos.toByteArray();
+			assertEquals(true,dataDAOImpl.uploadDataSet("11111", "中文test", 1,dataSet));
+		}
+		catch(Exception e){  
+			e.printStackTrace();   
+		}  
+		finally{  
+			try{  
+				if(in!=null){  
+					in.close();  
+				}  
+				if(bos!=null){  
+					bos.close();  
+				}  
+			}  
+			catch(Exception e){   
+				e.printStackTrace();    
+			}  
+		}
+	}
 	
 //	@Test
 //	public void testDownLoadTags(){

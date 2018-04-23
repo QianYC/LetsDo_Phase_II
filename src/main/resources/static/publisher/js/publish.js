@@ -5,25 +5,25 @@ window.onload=function () {
 function uploadDataSet() {
     var file = document.getElementById("fileselect").files[0];
     var userId=getCookie("userId");
-    var projectId=$("#projectName").innerText;
-    var maxWorkerNum=$("#workerNum").innerText;
-    var packageSize=$("#packageSize").innerText;
-    var picNum=$("#pictureAmount").innerText;
-    var startDate=$("#startDate").innerText;
-    var endDate=$("#endDate").innerText;
-    var tags=$("#tags").innerText;
-    var markMode=$("#markMode").innerText;
-    var tagRequirement=$("#note").innerText;
-    var levelLimit=$("#levelLimit").innerText;
-    var gradesLimit=$("#gradesLimit").innerText;
-    var money=$("#payment").innerText;
+    var projectId=$("#projectName").text();
+    var maxWorkerNum=$("#workerNum").text();
+    var packageNum=$("#packageNum").text();
+    var picNum=$("#pictureAmount").text();
+    var startDate=$("#startDate").text();
+    var endDate=$("#endDate").text();
+    var tags=$("#tags").text();
+    var markMode=$("#markMode").text();
+    var tagRequirement=$("#note").html();
+    var levelLimit=$("#levelLimit").text();
+    var gradesLimit=$("#gradesLimit").text();
+    var money=$("#payment").text();
 
     var formData = new FormData();
-    formData.append("file",file,file.name);
+    formData.append("file",file);
     formData.append("userId",userId);
     formData.append("projectId",projectId);
     formData.append("maxWorkerNum",maxWorkerNum);
-    formData.append("packageSize",packageSize);
+    formData.append("packageNum",packageNum);
     formData.append("picNum",picNum);
     formData.append("startDate",startDate);
     formData.append("endDate",endDate);
@@ -35,7 +35,7 @@ function uploadDataSet() {
     formData.append("money",money);
 
     $.ajax({
-        url:"/publisher/publish",
+        url:"/publisherPage/publish",
         type:"POST",
         secureuri : false,
         data:formData,

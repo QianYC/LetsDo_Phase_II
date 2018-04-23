@@ -1,6 +1,8 @@
 package YingYingMonster.LetsDo_Phase_II.model;
 
-public class WorkerRequirement {
+import java.io.Serializable;
+
+public class WorkerRequirement implements Serializable {
     private int LevelLimit;
 
     public WorkerRequirement(int levelLimit) {
