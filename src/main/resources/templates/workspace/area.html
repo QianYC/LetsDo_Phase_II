@@ -17,6 +17,25 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="@{/assets/js/Lightweight-Chart/cssCharts.css}"> 
 
+  <!-- jQuery Js -->
+    <script th:src="@{/assets/js/jquery-1.10.2.js}"></script>
+    <!-- Bootstrap Js -->
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+    <!-- Metis Menu Js -->
+    <script th:src="@{/assets/js/jquery.metisMenu.js}"></script>
+    <!-- Morris Chart Js -->
+    <script th:src="@{/assets/js/morris/raphael-2.1.0.min.js}"></script>
+    <script th:src="@{/assets/js/morris/morris.js}"></script>
+	
+	
+	<script th:src="@{/assets/js/easypiechart.js}"></script>
+	<script th:src="@{/assets/js/easypiechart-data.js}"></script>
+	
+	 <script th:src="@{/assets/js/Lightweight-Chart/jquery.chart.js}"></script>
+	
+    <!-- Custom Js -->
+    <script th:src="@{/assets/js/custom-scripts.js}"></script>
+
 	<!-- 自己的css文件 -->
     <link rel="stylesheet" th:href="@{/css/workspace/area.css}">
 	<link rel="stylesheet" th:href="@{/css/workspace/tools.css}">
@@ -24,18 +43,23 @@
  
  <!-- 自己的js文件 -->
  <script type="text/javascript" th:src="@{/js/workspace/canvas.js}"></script>
- <script type="text/javascript" th:src="@{/js/workspace/area.js}"></script>
+<script type="text/javascript" th:src="@{/js/workspace/area_new.js}"></script>
  <script type="text/javascript" th:src="@{/js/workspace/getPicture.js}"></script>
 <script type="text/javascript" th:src="@{/js/workspace/toolsEffect.js}"></script>
 	<script type="text/javascript" th:src="@{/js/workspace/progress.js}"></script>
-	<script type="text/javascript" th:src="@{/js/workspace/submit.js}"></script>
+	<script type="text/javascript" th:src="@{/js/util/cookie.js}"></script>
  <!-- 自己的js文件结束 -->
+ 
+ 
 	
 	<!-- 网页初始化 -->
  <script>
  window.onload = function(){
 		var mark = new Mark();
 		mark.init();//初始化画笔
+		
+	//	setRequirement();//area.js
+		getNewPicture();//getPicture.js
 		};
  </script>
  <!-- 网页初始化结束 -->
@@ -325,7 +349,7 @@
 	
 <!--上传标志开始-->
 <div  id="submitArea">
-	<img alt="上传" id = "submit" src="/pic/tools/submit-o.png" onClick="submit()" onMouseMove="hoverIn('submit') " onMouseOut="hoverOut('submit')">
+	<img alt="上传" id = "submit" src="/pic/tools/submit-o.png" onClick="submitTag()" onMouseMove="hoverIn('submit') " onMouseOut="hoverOut('submit')">
    <img alt="上传"  src="/pic/tools/submit_hover.png" hidden="hidden" id="submitHover"/><br>
 				
 </div>
@@ -351,24 +375,7 @@
     </div>
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
-    <!-- jQuery Js -->
-    <script th:src="@{/assets/js/jquery-1.10.2.js}"></script>
-    <!-- Bootstrap Js -->
-    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
-    <!-- Metis Menu Js -->
-    <script th:src="@{/assets/js/jquery.metisMenu.js}"></script>
-    <!-- Morris Chart Js -->
-    <script th:src="@{/assets/js/morris/raphael-2.1.0.min.js}"></script>
-    <script th:src="@{/assets/js/morris/morris.js}"></script>
-	
-	
-	<script th:src="@{/assets/js/easypiechart.js}"></script>
-	<script th:src="@{/assets/js/easypiechart-data.js}"></script>
-	
-	 <script th:src="@{/assets/js/Lightweight-Chart/jquery.chart.js}"></script>
-	
-    <!-- Custom Js -->
-    <script th:src="@{/assets/js/custom-scripts.js}"></script>
+  
 
       <script>
     

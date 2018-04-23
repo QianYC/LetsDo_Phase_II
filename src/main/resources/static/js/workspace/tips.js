@@ -64,7 +64,6 @@ function addStyle(id){
 function submitTag(){
 	//提交标记
 	//这种标记只有标签，没有图片
-	alert("submit");
 	var type = "tips";
 	var userId = getCookie("userId");
 	var projectId = getCookie("projectId");

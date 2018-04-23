@@ -45,7 +45,7 @@ function getPictureSize(pictureId){
 			type:"get",
 		    async:false, //同步
 			success: function(data){
-				alert(data);
+//				alert(data);
 				var size = data.split(",");
 				var width = parseInt(size[0]);
 				var height = parseInt(size[1]);
@@ -61,7 +61,7 @@ function getNewPictureId(){
 	var userId = getCookie("userId")||"wk1";
 	var projectId ="pjid";// getCookie("projectId")||"pjid";
 	var publisherId = getCookie("publisherId")||"pubid";
-	alert(userId+" "+projectId+" "+publisherId);
+//	alert(userId+" "+projectId+" "+publisherId);
 	var id = "";
 	$.ajax({
 		url: "/workspace/getNewPictureId/"+userId+"/"+projectId+"/"+publisherId,
@@ -77,7 +77,7 @@ function getNewPictureId(){
 
 function setCssBackground(url){
 	//图片放入url以后,用css加载为背景
-	alert("url "+url);
+//	alert("url "+url);
 	$("#penal").css("background-image", "url('"+url+"')");
 }
 

@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="@{/assets/js/Lightweight-Chart/cssCharts.css}"> 
 	
 	<!-- 自己的css文件 -->
-     <link th:href="@{/css/workspace/viewDone.css}" rel="stylesheet" />
 	<link th:href="@{/css/myProjects/projectDisplay.css}" rel="stylesheet" />
+	<link th:href="@{/css/myProjects/pictureStyle.css}" rel="stylesheet" />
  <!-- 自己的css文件结束 -->
 	
 	 <!-- JS Scripts-->
@@ -363,8 +363,31 @@
 
              
 				<!--我们的操作区开始  -->
+				<div id="projects">
+				 <div class="single-member effect-3">
+		            	<div class="member-image">
+		                	<img src="/pic/projects/01.png" alt="Member">
+		                </div>
+		                <div class="member-info">
+		                	<h3>h3</h3>
+		                    <h5>h5</h5>
+		                    <p>一些描述的话</p>
+		                    <div class="social-touch">
+		                    	<a class="fb-touch" href="#"></a>
+		                        <a class="tweet-touch" href="#"></a>
+		                        <a class="linkedin-touch" href="#"></a>
+		                    </div>
+		                </div>
+		            </div>
 				
-				<input type="button" onClick="test()" value="test" />
+				
+				</div>
+				
+				<input type="button" onClick="test1()" value="test" />
+				
+				<input type="button" onClick="test2()" value="test" />
+				
+				<input type="button" onClick="loadProjects()" value="load" />
  
 <!--我们的操作区结束 -->
 		
