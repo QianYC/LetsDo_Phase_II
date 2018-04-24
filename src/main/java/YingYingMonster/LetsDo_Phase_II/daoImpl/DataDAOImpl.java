@@ -135,11 +135,18 @@ public class DataDAOImpl implements DataDAO{
         
         if(picNum==0)
         	return 0;
+        int packSize=0;
+        if(picNum%packNum!=0)
+        	packSize=picNum/packNum+1;
+        else
+        	packSize=picNum/packSize;
         
         for(int i=1;i<=packNum;i++){
+        	if(index==picNum)
+    			break;
         	File pac=new File(ROOT+"/dataSet/"+publisherId+"_"+dataSetId+"/pac"+i);
         	pac.mkdirs();
-        	for(int j=0;j<Math.ceil(picNum/packNum);j++){
+        	for(int j=0;j<packSize;j++){
         		File f=new File(pac.getPath()+"/"+newfiles.get(index).getName());
         		newfiles.get(index).renameTo(f);
         		index++;

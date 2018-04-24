@@ -40,7 +40,7 @@ public class TestDataDAOImpl {
 				bos.write(buffer,0,len);  
 			}  
 			dataSet=bos.toByteArray();
-			assertEquals(2,dataDAOImpl.uploadDataSet("11112", "test", 1,dataSet));
+			assertEquals(3,dataDAOImpl.uploadDataSet("11112", "test", 4,dataSet));
 		}
 		catch(Exception e){  
 			e.printStackTrace();   
