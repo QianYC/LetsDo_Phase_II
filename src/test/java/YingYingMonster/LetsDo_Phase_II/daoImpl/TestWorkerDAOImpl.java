@@ -82,7 +82,7 @@ public class TestWorkerDAOImpl {
 		db.delete("projects", pj3);
 	}
 	
-	@Test
+//	@Test
 	public void viewDoneData(){
 		List<String>list=wkDao.viewDoneData("wk1", "pubid", "pjid");
 		assertEquals(0,list.size());
@@ -90,7 +90,7 @@ public class TestWorkerDAOImpl {
 			System.out.println(str);
 	}
 	
-	@Test
+//	@Test
 	public void viewUndoData(){
 		List<String>list=wkDao.viewUndoData("wk1", "pubid", "pjid");
 		assertEquals(4,list.size());
