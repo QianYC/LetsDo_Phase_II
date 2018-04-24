@@ -3,13 +3,12 @@ package YingYingMonster.LetsDo_Phase_II.controller;
 import YingYingMonster.LetsDo_Phase_II.exception.LoginFailException;
 import YingYingMonster.LetsDo_Phase_II.model.Publisher;
 import YingYingMonster.LetsDo_Phase_II.model.User;
+import YingYingMonster.LetsDo_Phase_II.model.Worker;
 import YingYingMonster.LetsDo_Phase_II.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -18,15 +17,25 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/publisherSignUp")
+    @GetMapping("/signUp")
 //    @ApiOperation(value = "访问用户注册界面")
     public String visitRegisterPage(){
         return "user/signUp";
     }
 
+    @GetMapping("/publisherSignUp")
+    public String publisherRegisterPage(){
+        return "user/publisherSignUp";
+    }
+
+    @GetMapping("/workerSignUp")
+    public String workerRegisterPage(){
+        return "user/workerSignUp";
+    }
+
     @PostMapping("/publisherSignUp")
 //    @ApiOperation(value = "注册新用户，注册成功后跳转至登录界面；失败则返回注册界面，显示错误信息")
-    public String register(@RequestParam("userId")String userId
+    public String publisherRegister(@RequestParam("userId")String userId
             ,@RequestParam("password")String password
             ,@RequestParam("nickName")String nickName){
         Publisher publisher=new Publisher();
@@ -39,10 +48,25 @@ public class UserController {
             return "user/publisherSignUp";
     }
 
+    @PostMapping("/workerSignUp")
+//    @ApiOperation(value = "注册新用户，注册成功后跳转至登录界面；失败则返回注册界面，显示错误信息")
+    public String workerRegister(@RequestParam("userId")String userId
+            ,@RequestParam("password")String password
+            ,@RequestParam("nickName")String nickName){
+        Worker worker=new Worker();
+        worker.setId(userId);
+        worker.setName(nickName);
+        worker.setPw(password);
+        if(userService.register(worker))
+            return "redirect:/user/login";
+        else
+            return "user/workerSignUp";
+    }
+
     @GetMapping("/login")
 //    @ApiOperation(value = "访问用户登录界面")
     public String visitLoginPage(){
-        return "user/login";
+        return "user/Login";
     }
 
     @PostMapping("/login")
@@ -52,12 +76,17 @@ public class UserController {
      */
     public String login(@RequestParam("userId")String userId
             ,@RequestParam("password")String password){
+        User user=null;
         try {
-            User user = userService.login(userId, password);
+            user = userService.login(userId, password);
         }catch (LoginFailException e){
-            return "user/login";
+            return "login";
         }
-        return "redirect:/publisherPage/publish";
+        if(user instanceof Publisher) {
+            return "redirect:/publisherPage/publish";
+        }else{
+            return "redirect:/myProjects/projects";
+        }
     }
 
     @GetMapping("/modify")

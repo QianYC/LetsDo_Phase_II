@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/project/{id}")
+@RequestMapping("/project")
 public class ProjectController {
     @Autowired
     PublisherService publisherService;
@@ -21,14 +21,14 @@ public class ProjectController {
     */
     @PostMapping("/publisherProjects")
     @ResponseBody
-    public String queryProjects(@PathVariable("id") String id, @RequestParam("keyword") String keyword){
+    public String queryProjects(@RequestParam("userId") String id, @RequestParam("keyword") String keyword){
         List<Project> temp=publisherService.searchProjects(id, keyword);
         String result="";
         for(int i=0;i<temp.size();i++){
             if(i==temp.size()-1)
-                result+=temp.get(i).getProjectId();
+                result+=temp.get(i).getProjectId()+","+temp.get(i).getTagRequirement();
             else
-                result+=temp.get(i).getProjectId()+",";
+                result+=temp.get(i).getProjectId()+","+temp.get(i).getTagRequirement()+",";
         }
         return result;
     }
