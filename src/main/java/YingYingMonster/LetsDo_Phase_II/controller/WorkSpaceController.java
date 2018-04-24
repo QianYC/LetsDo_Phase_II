@@ -1,7 +1,9 @@
 package YingYingMonster.LetsDo_Phase_II.controller;
 
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import YingYingMonster.LetsDo_Phase_II.model.Data;
+import YingYingMonster.LetsDo_Phase_II.model.Tag;
 import YingYingMonster.LetsDo_Phase_II.service.WorkerService;
 
 
@@ -111,6 +114,7 @@ public class WorkSpaceController {
     public String getNewPictureId(@PathVariable("projectId")String projectId ,
    			@PathVariable("userId")String userId,
    			@PathVariable("publisherId")String publisherId) {
+    	System.out.println(userId+" "+ publisherId+" "+ projectId);
     	List<String> list = service.viewUndoData(userId, publisherId, projectId);
     	
     	if(list==null||list.size()==0) {
@@ -148,7 +152,52 @@ public class WorkSpaceController {
            outputStream.write(data);  
            outputStream.flush();  
            outputStream.close();  
+           
        }  
+     
+     
+     /**
+    	 * 获得图片的size
+    	 */
+      @RequestMapping("/getNewPictureSize/{userId}/{projectId}/{publisherId}/{pictureId}")  
+      @ResponseBody  
+      public String getNewImageSize(HttpServletRequest request, HttpServletResponse response,@PathVariable("projectId")String projectId ,
+    			@PathVariable("userId")String userId,
+    			@PathVariable("publisherId")String publisherId,
+    			@PathVariable("pictureId")String pictureId) throws Exception{  
+        	
+            Data dataPac = service.getAData(userId, publisherId, projectId, pictureId);
+         
+            int height = dataPac.getHeight();
+            int width = dataPac.getWidth();
+           
+            String size = width+","+height;
+            return size;
+        } 
+      
+      
+      /**
+       * 
+       * @param request
+       * @param response
+       * @param projectId
+       * @param userId
+       * @param publisherId
+       * @return 获得当前项目进度
+       * @throws Exception
+       */
+      @RequestMapping("/getProgress/{userId}/{projectId}/{publisherId}")  
+      @ResponseBody  
+      public String getProjectProgress(HttpServletRequest request, HttpServletResponse response,@PathVariable("projectId")String projectId ,
+    			@PathVariable("userId")String userId,
+    			@PathVariable("publisherId")String publisherId) throws Exception{  
+        	
+            String prg = "";
+           
+            prg = service.viewProgress(userId, publisherId, projectId)+"";
+            System.out.println("get progress "+prg);
+            return prg;
+        }  
      
      
      /**
@@ -160,22 +209,51 @@ public class WorkSpaceController {
       * @param projectId
       * @param pictureId
       * @param remark  格式为
-      * content1;content2(结尾无分号,没有tag内容的 remark为空串)
+      * name1:content1,name2:content2(结尾无分号,没有tag内容的 remark为空串)
       */
-     @PostMapping("/submit/{type}/{userId}/{projectId}/{pictureId}")
+     @PostMapping("/submit/{type}/{userId}/{projectId}/{publisherId}/{pictureId}")
      public void submitTag(HttpServletRequest request, HttpServletResponse response,
      		@PathVariable("type")String type,
      		@PathVariable("userId")String userId,
      		@PathVariable("projectId")String projectId,
-     		@PathVariable("pictureId")String pictureId) {
+     		@PathVariable("pictureId")String pictureId,
+     		@PathVariable("publisherId")String publisherId) {
     	 
-    	String imageDataURL = request.getParameter("b64");
-     	String remark = request.getParameter("remark");  //tag图片的64位编码
+    	String imageDataURL = request.getParameter("b64");//tag图片的64位编码
+     	String remark = request.getParameter("remark");  
      	String w = request.getParameter("width");
      	String h = request.getParameter("height");
      	int width = Integer.parseInt(w);
      	int height = Integer.parseInt(h);//标记的长宽
      	
+     	Tag tag = new Tag();
+     	tag.setWidth(width);
+     	tag.setHeight(height);
+     	tag.setType(type);
+    
+     	
+     	switch(type) {
+     	case  "area":
+     		break;
+     	case  "tips":
+     		tag.setData(null);
+     		Map<String,String> map = new HashMap<String,String>();
+     		String[] list = remark.split(",");
+     		for(String s : list) {
+     			String[] ss = s.split(":");
+     			map.put(ss[0], ss[1]);
+     		}
+     		tag.setAttributes(map);
+     		break;
+     	case  "mark":
+  
+     		break;
+     	case "total":
+     		tag.setData(null);
+     		break;
+     	}
+     	
+     	service.uploadTag(userId, publisherId, projectId, pictureId, tag);
      }
 }
 
