@@ -45,12 +45,12 @@ public class TestProjectDAOImpl {
 	}
 	
 	@Test
-	public void test() throws FileNotFoundException, IOException{
+	public void test1() throws FileNotFoundException, IOException{
 		setUp();
 	}
 
 	@Test
-	public void test() throws FileNotFoundException, IOException {
+	public void test2() throws FileNotFoundException, IOException {
 		setUp();
 	}
 	

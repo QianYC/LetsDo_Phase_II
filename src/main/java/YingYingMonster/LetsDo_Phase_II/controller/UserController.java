@@ -5,7 +5,6 @@ import YingYingMonster.LetsDo_Phase_II.model.Publisher;
 import YingYingMonster.LetsDo_Phase_II.model.User;
 import YingYingMonster.LetsDo_Phase_II.model.Worker;
 import YingYingMonster.LetsDo_Phase_II.service.UserService;
-import org.apache.tools.ant.types.resources.selectors.InstanceOf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +17,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/SignUp")
+    @GetMapping("/signUp")
 //    @ApiOperation(value = "访问用户注册界面")
     public String visitRegisterPage(){
         return "user/signUp";
+    }
+
+    @GetMapping("/publisherSignUp")
+    public String publisherRegisterPage(){
+        return "user/publisherSignUp";
+    }
+
+    @GetMapping("/workerSignUp")
+    public String workerRegisterPage(){
+        return "user/workerSignUp";
     }
 
     @PostMapping("/publisherSignUp")
@@ -57,7 +66,7 @@ public class UserController {
     @GetMapping("/login")
 //    @ApiOperation(value = "访问用户登录界面")
     public String visitLoginPage(){
-        return "Login";
+        return "user/Login";
     }
 
     @PostMapping("/login")
@@ -76,7 +85,7 @@ public class UserController {
         if(user instanceof Publisher) {
             return "redirect:/publisherPage/publish";
         }else{
-            return "redirect:/Page/publish"
+            return "redirect:/myProjects/projects";
         }
     }
 
