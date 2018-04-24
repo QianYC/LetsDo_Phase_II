@@ -48,13 +48,8 @@ public class TestProjectDAOImpl {
 	public void test() throws FileNotFoundException, IOException{
 		setUp();
 	}
-
-	@Test
-	public void test() throws FileNotFoundException, IOException {
-		setUp();
-	}
 	
-	@Test
+//	@Test
 	public void addProject() throws FileNotFoundException, IOException, ClassNotFoundException {
 		setUp();
 		Project p1=new Project("pubid","pid",100,10,100,"2018-04-14","2018-04-15",null,null,100);
@@ -66,7 +61,7 @@ public class TestProjectDAOImpl {
 		tearDown();
 	}
 	
-	@Test
+//	@Test
 	public void validateProject() throws FileNotFoundException, ClassNotFoundException, IOException{
 		setUp();
 		assertEquals(false,pjDao.validateProject("pubid", "pid"));
@@ -75,7 +70,7 @@ public class TestProjectDAOImpl {
 		tearDown();
 	}
 
-	@Test
+//	@Test
 	public void publisherViewProjects() throws FileNotFoundException, ClassNotFoundException, IOException{
 		setUp();
 		List<Project>list=pjDao.publisherViewProjects("pubid");
@@ -86,7 +81,7 @@ public class TestProjectDAOImpl {
 		tearDown();
 	}
 	
-	@Test
+//	@Test
 	public void getAProject() throws FileNotFoundException, ClassNotFoundException, IOException{
 		setUp();
 		Project pj1=pjDao.getAProject("pubid","pid");
@@ -97,7 +92,7 @@ public class TestProjectDAOImpl {
 		tearDown();
 	}
 	
-	@Test
+//	@Test
 	public void modifyCurrentWorkerNum() throws FileNotFoundException, ClassNotFoundException, IOException{
 		setUp();
 		Project pj1=pjDao.getAProject("pubid","pid");
