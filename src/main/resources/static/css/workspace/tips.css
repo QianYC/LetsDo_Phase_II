@@ -2,9 +2,9 @@
 
 html { overflow-x: hidden; overflow-y: auto; } 
 
-#drawingPenal {
+#penal {
 	 	position:relative;
-	 	left: 0px;
+	 	left: 80px;
 	 	top: -530px;
         width: 800px;
         height: 530px;
@@ -28,15 +28,11 @@ html { overflow-x: hidden; overflow-y: auto; }
 -moz-transition:  0.1s;	/* Firefox 4 */
 -webkit-transition:  0.1s;	/* Safari 和 Chrome */
 -o-transition:  0.1s;	/* Opera */
-	       
+	       animation-delay:2s;
+-webkit-animation-delay:2s; 
 }
 
-#submit:active{
-	 transform: scale(0.3);
-	 position:relative;
-	 	left: 1030px;
-	 	top: -600px;
-}
+
 
 #submitHover{
 	position:relative;
@@ -49,7 +45,7 @@ html { overflow-x: hidden; overflow-y: auto; }
 
 #tipInput{
 	position:relative;
-	left:820px;
+	left:900px;
 	top:0px;
 	border-style: inset;
 	border-color:rgba(41,157,165,0.38);
@@ -65,7 +61,7 @@ html { overflow-x: hidden; overflow-y: auto; }
 		  .progress{
 		      position: relative;
 		      top: -520px;
-		      left: 50px;
+		      left: 80px;
 		      width: 800px;
 			  height: 10px;
 			  background: #313131;

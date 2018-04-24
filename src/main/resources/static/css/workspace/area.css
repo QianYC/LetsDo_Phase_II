@@ -3,7 +3,7 @@
 html { overflow-x: hidden; overflow-y: auto; } 
 
 
-#drawingPenal {
+#penal {
 	 	position:relative;
 	 	left: 100px;
 	 	top: -410px;
@@ -66,12 +66,6 @@ html { overflow-x: hidden; overflow-y: auto; }
 	       
 }
 
-#submit:active{
-	 transform: scale(0.3);
-	 position:relative;
-	 	left: 1030px;
-	 	top: -540px;
-}
 
 #submitHover{
 	position:relative;

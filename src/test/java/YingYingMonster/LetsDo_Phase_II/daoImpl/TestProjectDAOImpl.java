@@ -24,8 +24,11 @@ public class TestProjectDAOImpl {
 	ProjectDAO pjDao;
 	
 	public void setUp() throws FileNotFoundException, IOException{
-		Project p1=new Project("pubid","pid",100,10,100,"2018-04-14","2018-04-15",null,null,100);
+		Project p1=new Project("pubid","pjid",100,2,6,"2018-04-14","2018-04-15",null,null,100);
+		Project p2=new Project("publisher2","project2",100,2,6,"2018-04-14","2018-04-15",null,null,100);
 		pjDao.addProject(p1);
+		pjDao.addProject(p2);
+
 	}
 	
 	public void tearDown() throws FileNotFoundException, ClassNotFoundException, IOException {
@@ -40,7 +43,17 @@ public class TestProjectDAOImpl {
 			}
 		});
 	}
+	
+	@Test
+	public void test() throws FileNotFoundException, IOException{
+		setUp();
+	}
 
+	@Test
+	public void test() throws FileNotFoundException, IOException {
+		setUp();
+	}
+	
 	@Test
 	public void addProject() throws FileNotFoundException, IOException, ClassNotFoundException {
 		setUp();

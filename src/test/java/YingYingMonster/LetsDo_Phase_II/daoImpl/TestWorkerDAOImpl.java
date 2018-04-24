@@ -85,7 +85,7 @@ public class TestWorkerDAOImpl {
 	@Test
 	public void viewDoneData(){
 		List<String>list=wkDao.viewDoneData("wk1", "pubid", "pjid");
-		assertEquals(3,list.size());
+		assertEquals(0,list.size());
 		for(String str:list)
 			System.out.println(str);
 	}
@@ -93,7 +93,7 @@ public class TestWorkerDAOImpl {
 	@Test
 	public void viewUndoData(){
 		List<String>list=wkDao.viewUndoData("wk1", "pubid", "pjid");
-		assertEquals(2,list.size());
+		assertEquals(4,list.size());
 		for(String str:list)
 			System.out.println(str);
 	}
