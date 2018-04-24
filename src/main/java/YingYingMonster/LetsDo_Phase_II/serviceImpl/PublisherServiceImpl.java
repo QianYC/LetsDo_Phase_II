@@ -44,7 +44,7 @@ public class PublisherServiceImpl implements PublisherService {
 		if(num<=0)
 			return false;
 		project.setPicNum(num);
-		if(num>project.getPackageNum())
+		if(num<project.getPackageNum())
 			project.setPackageNum(num);
 		try {
 			pjDao.addProject(project);
