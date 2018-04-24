@@ -43,6 +43,11 @@ public class TestProjectDAOImpl {
 			}
 		});
 	}
+	
+	@Test
+	public void test() throws FileNotFoundException, IOException{
+		setUp();
+	}
 
 	@Test
 	public void test() throws FileNotFoundException, IOException {
