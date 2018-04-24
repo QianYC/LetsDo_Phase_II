@@ -1,5 +1,5 @@
 window.onload=function () {
-    document.getElementById("username").innerHTML=getCookie("username")+"&nbsp;";
+    document.getElementById("username").innerHTML=getCookie("userId")+"&nbsp;";
 }
 
 function uploadDataSet() {
