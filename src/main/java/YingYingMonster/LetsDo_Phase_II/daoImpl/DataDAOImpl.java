@@ -98,9 +98,8 @@ public class DataDAOImpl implements DataDAO{
         for(Enumeration<ZipEntry> enumeration = zipFile.getEntries();enumeration.hasMoreElements();){  
             ZipEntry zipEntry = enumeration.nextElement();//获取元素  
             //排除空文件夹  
-            if(zipEntry.getName().endsWith(".png")||zipEntry.getName().endsWith(".jpg")){  
+            if(!zipEntry.getName().endsWith("/")){  
                 System.out.println("正在解压文件:"+zipEntry.getName());//打印输出信息  
-            	picNum++;
                 OutputStream os = new FileOutputStream(new File(outPath+zipEntry.getName()));//创建解压后的文件  
                 BufferedOutputStream bos1 = new BufferedOutputStream(os);//带缓的写出流  
                 InputStream is = zipFile.getInputStream(zipEntry);//读取元素  
@@ -117,37 +116,51 @@ public class DataDAOImpl implements DataDAO{
                 is.close();  
                 bos1.close();  
                 os.close();  
-            }  
-            else{  
-                //如果为空文件夹，则创建该文件夹  
-                new File(outPath+zipEntry.getName()).mkdirs();  
-            }  
+            }
+            else{
+            	File dre=new File(outPath+zipEntry.getName());
+            	dre.mkdirs();
+            	continue;
+            }
         }  
         zipFile.close();  
         
         //分包
-        if(picNum==0)
-        	return 0;
         
         int index=0;
-        File[] files=new File(outPath).listFiles(new FilenameFilter(){
-			@Override
-			public boolean accept(File arg0, String arg1) {
-				// TODO 自动生成的方法存根
-				return arg1.endsWith(".jpg")||arg1.endsWith(".png")||arg1.endsWith(".txt")||arg1.endsWith(".JPG")||arg1.endsWith(".PNG");
-			}	
-        });
+        File[] files=new File(outPath).listFiles();
+        
+        ArrayList<File> newfiles=calFiles(files);
+        picNum=newfiles.size();
+        
+        if(picNum==0)
+        	return 0;
+        int packSize=0;
+        if(picNum%packNum!=0)
+        	packSize=picNum/packNum+1;
+        else
+        	packSize=picNum/packSize;
         
         for(int i=1;i<=packNum;i++){
+        	if(index==picNum)
+    			break;
         	File pac=new File(ROOT+"/dataSet/"+publisherId+"_"+dataSetId+"/pac"+i);
         	pac.mkdirs();
-        	for(int j=0;j<Math.ceil(picNum/packNum);j++){
-        		File f=new File(pac.getPath()+"/"+files[index].getName());
-        		files[index].renameTo(f);
+        	for(int j=0;j<packSize;j++){
+        		File f=new File(pac.getPath()+"/"+newfiles.get(index).getName());
+        		newfiles.get(index).renameTo(f);
         		index++;
-        		if(index==files.length)
+        		if(index==picNum)
         			break;
         	}
+        }
+        
+        //删除多余文件夹
+        File[] nowFiles=new File(outPath).listFiles();
+        for(int i=0;i<nowFiles.length;i++){
+        	System.out.println(nowFiles[i].getName());
+        	if(nowFiles[i].isDirectory()&&!nowFiles[i].getName().contains("pac"))
+        		deleteAll(nowFiles[i]);
         }
         
         //建立publisher相关文件夹
@@ -168,6 +181,32 @@ public class DataDAOImpl implements DataDAO{
         	handler.appendCSV(new String[]{"workerId"}, publisherFork.getPath());
         }
 		return picNum;
+	}
+
+	private void deleteAll(File file) {
+		// TODO 自动生成的方法存根
+		if(file.isDirectory()){
+			File[] files=file.listFiles();
+			for(File f:files)
+				deleteAll(f);
+			file.delete();
+		}
+		else
+			file.delete();
+	}
+
+	private ArrayList<File> calFiles(File[] files) {
+		// TODO 自动生成的方法存根
+		ArrayList<File> newFiles=new ArrayList<File>();
+		for(File f:files){
+			if(f.isDirectory()){
+				ArrayList<File> list=calFiles(f.listFiles());
+				newFiles.addAll(list);
+			}
+			else if(f.getName().endsWith(".jpg")||f.getName().endsWith(".png"))
+				newFiles.add(f);
+		}
+		return newFiles;
 	}
 
 	@Override
@@ -246,10 +285,11 @@ public class DataDAOImpl implements DataDAO{
         int picNum=0;
         for(YingYingMonster.LetsDo_Phase_II.model.Project p:projects){
         	if(p.getProjectId().equals(projectId)){
-        		picNum=p.getPackageNum();
+        		picNum=p.getPicNum();
         		break;
         	}
         }
+        System.out.println(picNum);
         if(picNum==0)
         	return 0;
 		return nameList.size()/picNum*1.0;
